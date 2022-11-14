@@ -7,7 +7,7 @@ export default function SignIn() {
   return (
     <div>
       <Typography color="secondary" className="mainHeader">
-        CREATE YOUR ACCOUNT
+        
       </Typography>
       <Button className="iconButton">
         <AccountCircleIcon className="icon" />
