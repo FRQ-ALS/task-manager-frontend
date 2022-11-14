@@ -1,0 +1,13 @@
+.container {
+    height:70px
+}
+
+.homeIcon {
+    scale: 1.7;
+}
+
+.lockIcon{
+    scale: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,12 @@
+.mainHeader{
+    font-weight: bold;
+    font-size: 2em;
+}
+.iconButton{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+}
+.icon{
+    scale:5;
+}

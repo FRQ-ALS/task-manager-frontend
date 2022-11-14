@@ -5,13 +5,16 @@ const theme = createMuiTheme({
 
 palette : {
     primary: {
-        main: deepPurple[500]
+        main: deepPurple[600]
     },
     secondary: {
-        main: amber[500],
+        main: amber[900],
         contrastText: deepPurple[900]
-    }
+    },
+    background: {
+        default: "#222222"
+      }
 }
 });
 
-export default theme;
+export default theme
