@@ -9,43 +9,28 @@ import MapsHomeWorkRoundedIcon from "@mui/icons-material/MapsHomeWorkRounded";
 import LockOpenRoundedIcon from "@mui/icons-material/LockOpenRounded";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Appbar() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
+  const signInHandler = () => {
+    navigate("/login");
+  };
 
-    const signInHandler = () => {
-        navigate("/login")
-
-    }
-
-    const homePageHandler = () => {
-        navigate("/home")
-    }
-
-
+  const homePageHandler = () => {
+    navigate("/home");
+  };
 
   return (
     <AppBar position="static">
-      <Container className="container" maxWidth="x1">
-        <Toolbar disableGutters={true} variant="regular">
-          <Grid sx={{ flexGrow: 5}} container spacing={135}>
-            <Grid item>
-              <Button onClick={homePageHandler} >
-                <MapsHomeWorkRoundedIcon
-                  color="secondary"
-                  className="homeIcon"
-                />
-              </Button>
-            </Grid>
-            <Grid item >
-              <Button onClick={signInHandler}>
-                <LockOpenRoundedIcon className="lockIcon" color="secondary" />
-              </Button>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </Container>
+      <Toolbar disableGutters={true} variant="regular" className="container">
+        <Button onClick={homePageHandler}>
+          <MapsHomeWorkRoundedIcon color="secondary" className="homeIcon" />
+        </Button>
+        
+        <Button onClick={signInHandler}>
+          <LockOpenRoundedIcon className="lockIcon" color="secondary" />
+        </Button>
+      </Toolbar>
     </AppBar>
   );
 }

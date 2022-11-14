@@ -1,17 +1,21 @@
 import React from "react";
-import { Button } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./SignIn.css";
-import { Typography } from "@mui/material";
+import { Typography, TextField, Paper, Button, Container} from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
+
+
 export default function SignIn() {
   return (
-    <div>
-      <Typography color="secondary" className="mainHeader">
-        
-      </Typography>
-      <Button className="iconButton">
-        <AccountCircleIcon className="icon" />
-      </Button>
+    <div className="main-container">
+      <Typography color="primary">Enter your email</Typography>
+      <Paper
+        sx={{ backgroundColor: "#5D3F6A", borderRadius: 3 }}
+        className="paper-container"
+      >
+        <TextField sx={{borderRadius:20}}  className="field" variant="filled"/>
+        <Button className="button" variant="contained" endIcon={<SendIcon/>}/>
+      </Paper>
     </div>
   );
 }

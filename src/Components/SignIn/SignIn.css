@@ -1,12 +1,21 @@
-.mainHeader{
-    font-weight: bold;
-    font-size: 2em;
+.paper-container {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.iconButton{
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
+
+
+.button{
+    height: 55px;
+    border-radius: 25px;
 }
-.icon{
-    scale:5;
-}
+
+
+
+
