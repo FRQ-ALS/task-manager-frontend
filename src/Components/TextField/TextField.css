@@ -1,0 +1,27 @@
+.textfield{
+    color: white;
+    background-color: #4c599e;
+    height: 55px;
+    width: 400px;
+    font-size: 1.7em;
+    /* outline: 1px solid white; */
+    border-radius: 10px;
+    font-family: Helvetica;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+
+}
+
+.textfield:focus {
+    outline: none;
+  }
+
+.textfield.error {
+    outline: 2px solid #e3665d;
+}
+
+.textfield.success{
+    outline: 2px solid green;
+}

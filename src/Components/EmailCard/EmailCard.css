@@ -1,0 +1,18 @@
+.paper-container {
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .button{
+      height: 55px;
+  }
+  .textField__label {
+    color: aliceblue !important;
+  }

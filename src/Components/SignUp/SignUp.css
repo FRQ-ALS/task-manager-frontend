@@ -1,0 +1,22 @@
+.main-container {
+  position: relative;
+
+}
+
+.multistage-container{
+  position: absolute;
+  left:50%;
+  top: 50%;
+  transform: translate(-43%, 100%);
+}
+
+.typewriter-container{
+  position:absolute;
+  top:450px;
+  color: #2F3C7E;
+  font-size: 2em;
+}
+
+
+
+

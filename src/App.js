@@ -11,7 +11,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import SignIn from "./Components/SignIn/SignIn";
+import SignUp from "./Components/SignUp/SignUp";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <CssBaseline />
           <AppBar/>
           <Routes>
-            <Route path="/login" element={<SignIn/>}/>
+            <Route path="/login" element={<SignUp/>}/>
           </Routes>
         </ThemeProvider>
       </Router>
