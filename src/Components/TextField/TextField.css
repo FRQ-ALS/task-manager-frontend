@@ -20,8 +20,34 @@
 
 .textfield.error {
     outline: 2px solid #e3665d;
+    animation: shake 250ms linear;
 }
 
 .textfield.success{
     outline: 2px solid green;
+}
+
+
+@keyframes shake {
+    10% {
+        transform: translateX(-1%);
+    }
+
+    30% {
+        transform: translateX(1%);
+    }
+
+    50% {
+        transform: translateX(-1%);
+    }
+
+    70% {
+        transform: translateX(1%);
+    }
+    90% {
+        transform: translateX(-1%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

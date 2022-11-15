@@ -34,7 +34,7 @@ export default function EmailCard(props) {
 
   return (
     <Paper
-      sx={{ backgroundColor: "#2F3C7E", borderRadius: 10 }}
+      sx={{ backgroundColor: "#2F3C7E", borderRadius: 5}}
       className="paper-container"
     >
       <CustomTextField

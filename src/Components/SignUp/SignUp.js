@@ -12,14 +12,15 @@ import CustomTextField from "../TextField/CustomTextField";
 const DEFAULT_MESSAGE = "Welcome! Please enter your email!";
 
 export default function SignUp() {
-  const [typeWriterText, setTypeWriterText] = useState(DEFAULT_MESSAGE);
+  const [typeWriterText, setTypeWriterText] = useState("HELLO");
   const [email, setEmail] = useState("");
   const [activeStep, setActiveStep] = useState(1);
 
   const handleActiveStep = (enteredActiveStage) => {
     setActiveStep(enteredActiveStage);
-    setTypeWriterText("Hello");
   };
+
+  
 
   return (
     <div className="main-container">
@@ -31,7 +32,7 @@ export default function SignUp() {
           options={{
             delay: 30,
           }}
-          onInit={(typewriter) => {
+          onInith={(typewriter) => {
             typewriter.typeString(typeWriterText).pauseFor(2500).start();
           }}
         />
