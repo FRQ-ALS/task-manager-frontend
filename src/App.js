@@ -12,6 +12,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import SignUp from "./Components/SignUp/SignUp";
+import EmailVerification from "./Components/EmailVerification/EmailVerification";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <AppBar/>
           <Routes>
             <Route path="/login" element={<SignUp/>}/>
+            <Route exact path="/verify/:token" element={<EmailVerification/>}/>
           </Routes>
         </ThemeProvider>
       </Router>

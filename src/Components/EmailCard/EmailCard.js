@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import { Typography, TextField, Paper, Button, Container } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CustomTextField from "../TextField/CustomTextField";
+import CustomAlert from "../CustomAlert/CustomAlert";
 
 import "./EmailCard.css";
 
 export default function EmailCard(props) {
   const [email, setEmail] = useState("");
   const [fieldVariant, setFieldVariant] = useState("");
+  const [alertMessage, setAlertMessage] = useState("EMAIL ALREADY TAKEN");
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [containerStatus, setContainerStaus] = useState("")
 
   const handleEmailSubmit = (e) => {
     setFieldVariant("")
+    
     fetch("/api/v1/account/emailcheck", {
       credentials: "include",
       method: "POST",
@@ -19,12 +24,19 @@ export default function EmailCard(props) {
       },
       body: JSON.stringify(email),
     }).then((response) => {
+
       if (response.status != 200) {
         setFieldVariant("error");
         return;
       }
+
       setFieldVariant("success")
-      props.onSetActiveStage(2);
+      props.onSetEmail(email)
+
+      setTimeout(()=>{
+        props.onSetActiveStage(2);
+      }, 1000)
+      
     });
   };
 
@@ -33,7 +45,8 @@ export default function EmailCard(props) {
   };
 
   return (
-    <Paper
+    <div >
+    <Paper 
       sx={{ backgroundColor: "#2F3C7E", borderRadius: 5}}
       className="paper-container"
     >
@@ -52,5 +65,8 @@ export default function EmailCard(props) {
         <SendIcon />
       </Button>
     </Paper>
+    {/* <CustomAlert enabled={alertOpen} className="alert" variant="error" message={alertMessage}/> */}
+    </div>
+    
   );
 }
