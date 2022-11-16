@@ -22,7 +22,7 @@
 
 #active {
   outline: 7px solid #32a862;
-  animation: pop 250ms linear;
+  animation: upDown 250ms linear;
 }
 
 @keyframes pop{
@@ -39,3 +39,28 @@
       transform: scale(100%);
   }
 }
+
+@keyframes upDown {
+  10% {
+      transform: translateY(-5%);
+  }
+
+  30% {
+      transform: translateY(5%);
+  }
+
+  50% {
+      transform: translateY(-7.5%);
+  }
+
+  70% {
+      transform: translateY(7.5%);
+  }
+  90% {
+      transform: translateY(-5%);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+

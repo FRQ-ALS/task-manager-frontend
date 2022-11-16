@@ -8,6 +8,7 @@ import Typewriter from "typewriter-effect";
 import EmailCard from "../EmailCard/EmailCard";
 import PasswordCard from "../PasswordCard/PasswordCard";
 import VerificationCard from "../VerificationCard/VerificationCard";
+import ImageUploadCard from "../ImageUploadCard/ImageUploadCard";
 
 const DEFAULT_MESSAGE = "Welcome! Please enter your email!";
 
@@ -15,7 +16,7 @@ export default function SignUp() {
   const [typeWriterText, setTypeWriterText] = useState(DEFAULT_MESSAGE);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(4);
 
   const handleActiveStep = (enteredActiveStage) => {
     setActiveStep(enteredActiveStage);
@@ -68,6 +69,9 @@ export default function SignUp() {
         );
 
       case 4:
+        return (
+          <ImageUploadCard/>
+        );
     }
   }
 
