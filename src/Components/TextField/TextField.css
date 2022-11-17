@@ -27,6 +27,16 @@
     outline: 2px solid green;
 }
 
+::placeholder {
+    color: white;
+    opacity: 0.2;
+}
+
+::-ms-input-placeholder{
+    color: white;
+    opacity: 0.2;
+}
+
 
 @keyframes shake {
     10% {

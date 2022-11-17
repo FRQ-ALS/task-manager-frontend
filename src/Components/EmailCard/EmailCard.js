@@ -71,7 +71,7 @@ export default function EmailCard(props) {
     >
       <CustomTextField
         onChange={handleEmailChange}
-        className="textfield"
+        className=""
         type="email"
         variant={fieldVariant}
       />
