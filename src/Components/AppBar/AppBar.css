@@ -1,7 +1,22 @@
-.container {
-    height:70px;
+.main{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height:60px;
+    background-color: #2F3C7E;
+}
+
+.login-container {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+
+}
+
+.button{
+    font-weight: bold !important;
+    height:40px !important;
 }
 
 .homeIcon {

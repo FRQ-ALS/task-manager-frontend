@@ -13,7 +13,7 @@ export default function Appbar() {
   let navigate = useNavigate();
 
   const signInHandler = () => {
-    navigate("/login");
+    navigate("/signup");
   };
 
   const homePageHandler = () => {
@@ -21,16 +21,28 @@ export default function Appbar() {
   };
 
   return (
-    <AppBar position="static">
-      <Toolbar disableGutters={true} variant="regular" className="container">
+    <div disableGutters={true} variant="regular" className="main">
+      <div container className="home-container">
         <Button onClick={homePageHandler}>
           <MapsHomeWorkRoundedIcon color="secondary" className="homeIcon" />
         </Button>
-        
-        <Button onClick={signInHandler}>
-          <LockOpenRoundedIcon className="lockIcon" color="secondary" />
+      </div>
+
+      <div className="login-container">
+        <Button className="button" variant="contained" color="secondary">
+          SIGN IN
         </Button>
-      </Toolbar>
-    </AppBar>
+
+        <Button
+          className="button"
+          variant="contained"
+          color="secondary"
+          onClick={signInHandler}
+        >
+          {/* <LockOpenRoundedIcon className="lockIcon" color="secondary" /> */}
+          SIGN UP
+        </Button>
+      </div>
+    </div>
   );
 }

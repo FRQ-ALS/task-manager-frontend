@@ -22,7 +22,7 @@ function App() {
           <CssBaseline />
           <AppBar/>
           <Routes>
-            <Route path="/login" element={<SignUp/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
             <Route exact path="/verify/:token" element={<EmailVerification/>}/>
           </Routes>
         </ThemeProvider>

@@ -1,29 +1,60 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Typography, TextField, Paper, Button, Container } from "@mui/material";
 import DefaultImage from "../../Images/default-image.png";
 import "./ImageUploadCard.css";
 
 export default function ImageUploadCard(props) {
   const [image, setImage] = useState(DefaultImage);
-
   const [imageChanged, setImageChanged] = useState(false);
+  const [approved, setApproved] = useState("");
+  const navigate = useNavigate();
 
   const fileHandler = (e) => {
     setImage(e.target.files[0]);
     setImageChanged(true);
   };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    uploadImage();
+  };
 
-  const handleSkip = (e) => {};
+  const handleSkip = (e) => {
+    navigate("/")
+  };
 
   function createImageURL(image) {
     return URL.createObjectURL(image);
   }
 
+  function uploadImage() {
+    const body = new FormData();
+    body.append("file", image);
+
+    var userID = localStorage.getItem("userID");
+    console.log(userID);
+
+    fetch("/api/v1/images/upload", {
+      credentials: "include",
+      method: "POST",
+      headers: {},
+      body: body,
+    }).then((response) => {
+      if (response.status == 200) {
+        console.log("Image uploaded");
+        setApproved("approved");
+
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      }
+    });
+  }
+
   return (
     <div>
       <Paper
+        id={approved}
         sx={{ backgroundColor: "#2F3C7E", borderRadius: 5 }}
         className="image-container"
       >

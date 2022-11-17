@@ -26,4 +26,8 @@
 .choice-button{
     font-weight: bold !important;
 }
+
+#approved {
+    outline: 4px solid green;
+}
   

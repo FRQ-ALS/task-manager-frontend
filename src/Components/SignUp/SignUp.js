@@ -10,13 +10,13 @@ import PasswordCard from "../PasswordCard/PasswordCard";
 import VerificationCard from "../VerificationCard/VerificationCard";
 import ImageUploadCard from "../ImageUploadCard/ImageUploadCard";
 
-const DEFAULT_MESSAGE = "Welcome! Please enter your email!";
+const DEFAULT_MESSAGE = "Enter your email.";
 
 export default function SignUp() {
   const [typeWriterText, setTypeWriterText] = useState(DEFAULT_MESSAGE);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(1);
 
   const handleActiveStep = (enteredActiveStage) => {
     setActiveStep(enteredActiveStage);
@@ -29,6 +29,10 @@ export default function SignUp() {
   const handlePasswordChange = (enteredValue) => {
     setPassword(enteredValue);
     submitRequest();
+  };
+
+  const handleTypeWriterText = (enteredText) => {
+    setTypeWriterText(enteredText);
   };
 
   function submitRequest() {
@@ -50,6 +54,7 @@ export default function SignUp() {
       case 1:
         return (
           <EmailCard
+            onSetTypeWriter={handleTypeWriterText}
             onSetEmail={handleEmailChange}
             onSetActiveStage={handleActiveStep}
           />
@@ -69,9 +74,7 @@ export default function SignUp() {
         );
 
       case 4:
-        return (
-          <ImageUploadCard/>
-        );
+        return <ImageUploadCard />;
     }
   }
 
@@ -80,16 +83,9 @@ export default function SignUp() {
       <div container className="multistage-container">
         <MultiStage activeStage={activeStep} className="stages" />
       </div>
-      {/* <div className="typewriter-container">
-        <Typewriter
-          options={{
-            delay: 30,
-          }}
-          onInit={(typewriter) => {
-            typewriter.typeString(typeWriterText).pauseFor(2500).start();
-          }}
-        />
-      </div> */}
+      <div className="typewriter-container">
+        <p className="bottom-text">{typeWriterText}</p>
+      </div>
       {cardSwitcher()}
     </div>
   );

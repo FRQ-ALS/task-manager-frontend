@@ -6,7 +6,7 @@ import "./VerificationCard.css";
 
 export default function VerificationCard(props) {
   const [userLocked, setUserLocked] = useState(true);
-  const [verified, setVerified] = useState("")
+  const [verified, setVerified] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,6 +17,7 @@ export default function VerificationCard(props) {
 
   function getData() {
     var email = props.email;
+
     fetch("api/v1/account/checkVerified/" + email, {
       credentials: "include",
       method: "GET",
@@ -25,17 +26,17 @@ export default function VerificationCard(props) {
       },
     }).then((response) => {
       if (response.status == 200) {
+        response.json().then((responseJson) => {
+          console.log(responseJson);
+          localStorage.setItem("userID", responseJson.userID);
+        });
         setUserLocked(false);
-        setVerified("verified")
+        setVerified("verified");
         setTimeout(() => {
           props.onSetActiveStage(4);
         }, 3000);
       }
     });
-  }
-
-  const toggleEnabled = () => {
-    setUserLocked(!userLocked);
   }
 
   function isUserLocked() {
@@ -66,12 +67,12 @@ export default function VerificationCard(props) {
 
   return (
     <div>
-      <Paper id={verified}
+      <Paper
+        id={verified}
         sx={{ backgroundColor: "#2F3C7E", borderRadius: 5 }}
         className="verification-container"
       >
         {isUserLocked()}
-        
       </Paper>
       {/* <Button variant="outlined" onClick={toggleEnabled}></Button> */}
     </div>

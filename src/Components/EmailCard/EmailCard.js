@@ -14,8 +14,15 @@ export default function EmailCard(props) {
   const [containerStatus, setContainerStaus] = useState("")
 
   const handleEmailSubmit = (e) => {
-    setFieldVariant("")
-    
+ 
+    if (!checkEmailSyntax(email)) {
+      setFieldVariant("error");
+      setTimeout(() => {
+        setFieldVariant("");
+      }, 1000);
+      return;
+    }
+
     fetch("/api/v1/account/emailcheck", {
       credentials: "include",
       method: "POST",
@@ -35,10 +42,22 @@ export default function EmailCard(props) {
 
       setTimeout(()=>{
         props.onSetActiveStage(2);
+        props.onSetTypeWriter("Enter a password")
       }, 1000)
       
     });
   };
+
+
+  function checkEmailSyntax(email) {
+
+    if(!email.includes("@")) return false;
+
+    if(!email.includes(".")) return false;
+
+    return true
+
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

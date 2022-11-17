@@ -12,10 +12,16 @@
 
 .typewriter-container{
   position:absolute;
-  top:450px;
+  top:380px;
   color: #2F3C7E;
   font-size: 3em;
+}
 
+.bottom-text{
+  font-family: Tahoma;
+  color: #2F3C7E;
+  font-size: 1em;
+  
 }
 
 

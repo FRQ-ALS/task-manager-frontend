@@ -14,6 +14,7 @@ palette : {
     },
     background: {
         default: "#d1e0e0"
+        
       },
 
 }
