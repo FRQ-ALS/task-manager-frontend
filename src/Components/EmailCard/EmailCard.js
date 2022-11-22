@@ -71,9 +71,10 @@ export default function EmailCard(props) {
     >
       <CustomTextField
         onChange={handleEmailChange}
-        className=""
+        className="field"
         type="email"
         variant={fieldVariant}
+        placeholder="Enter your email"
       />
       <Button
         className="button"

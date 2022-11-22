@@ -9,6 +9,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    animation: fade-in 500ms linear;
+    /* transform-origin: top center; */
   }
   
   .button{
@@ -26,6 +28,22 @@
     width: 400px;
   } */
 
-  
+
+  @keyframes fade-in {
+    0% {
+        opacity: 0;
+        /* transform: rotateY(-90deg); */
+    }
+    50% {
+        /* transform: rotateY(-20deg); */
+    }
+    100% {
+        opacity: 1;
+        /* transform: rotateY(0deg); */
+    }
+}
+
+
+
 
   

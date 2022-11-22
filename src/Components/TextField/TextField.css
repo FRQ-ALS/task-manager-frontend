@@ -18,12 +18,12 @@
     outline: none;
   }
 
-.textfield.error {
+#error{
     outline: 2px solid #e3665d;
     animation: shake 250ms linear;
 }
 
-.textfield.success{
+#success{
     outline: 2px solid green;
 }
 

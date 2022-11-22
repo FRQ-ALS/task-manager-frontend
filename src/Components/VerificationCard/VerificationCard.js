@@ -25,9 +25,11 @@ export default function VerificationCard(props) {
         "Content-Type": "application/json",
       },
     }).then((response) => {
+
+      console.log(response.status)
       if (response.status == 200) {
         response.json().then((responseJson) => {
-          console.log(responseJson);
+          // console.log(responseJson);
           localStorage.setItem("userID", responseJson.userID);
         });
         setUserLocked(false);

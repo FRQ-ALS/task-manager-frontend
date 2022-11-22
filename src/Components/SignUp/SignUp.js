@@ -15,9 +15,8 @@ const DEFAULT_MESSAGE = "Enter your email.";
 export default function SignUp() {
   const [typeWriterText, setTypeWriterText] = useState(DEFAULT_MESSAGE);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [activeStep, setActiveStep] = useState(1);
-
+  
   const handleActiveStep = (enteredActiveStage) => {
     setActiveStep(enteredActiveStage);
   };
@@ -27,16 +26,16 @@ export default function SignUp() {
   };
 
   const handlePasswordChange = (enteredValue) => {
-    setPassword(enteredValue);
-    submitRequest();
+    submitRequest(enteredValue)
   };
 
   const handleTypeWriterText = (enteredText) => {
     setTypeWriterText(enteredText);
   };
 
-  function submitRequest() {
+  function submitRequest(password) {
     var body = { email, password };
+    console.log(body)
     fetch("api/v1/account/register", {
       credentials: "include",
       method: "POST",
@@ -84,7 +83,7 @@ export default function SignUp() {
         <MultiStage activeStage={activeStep} className="stages" />
       </div>
       <div className="typewriter-container">
-        <p className="bottom-text">{typeWriterText}</p>
+        {/* <p className="bottom-text">{typeWriterText}</p> */}
       </div>
       {cardSwitcher()}
     </div>

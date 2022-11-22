@@ -24,10 +24,11 @@ export default function PasswordCard(props) {
 
     setFieldVariant("success");
     props.onSetPassword(password)
-
+    
     setTimeout(()=>{
         props.onSetActiveStage(3)
     },1000)
+
 
   };
 
@@ -41,6 +42,7 @@ export default function PasswordCard(props) {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+
   };
 
   const handleRetypeChange = (e) => {
@@ -58,6 +60,7 @@ export default function PasswordCard(props) {
           className="textfield"
           type="password"
           variant={fieldVariant}
+          placeholder="Enter a password"
         />
         <Button
           className="button"
@@ -73,6 +76,7 @@ export default function PasswordCard(props) {
           className="textfield"
           type="password"
           variant={fieldVariant}
+          placeholder="Confirm your password"
         />
       </Paper>
     </div>

@@ -7,8 +7,7 @@
   color: white;
   animation: rotateX 500ms linear;
   transform-origin: top center;
-
-
+  
   position: absolute;
   display:flex;
   flex-direction: column;
@@ -27,6 +26,10 @@
 
 .link{
     color: white;
+}
+
+.login-alert {
+    border-radius: 10px !important;
 }
 
 

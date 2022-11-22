@@ -2,13 +2,14 @@
     color: #2F3C7E;
     font-weight: bold;
     background-color: #FBEAEB;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-size: 1em;
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px; */
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 10px;
     outline: 1px solid black;
-    animation: pop 250ms linear;
+    /* animation: pop 250ms linear; */
 }
 
 @keyframes pop{
