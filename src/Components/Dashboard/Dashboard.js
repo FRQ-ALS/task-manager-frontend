@@ -67,42 +67,41 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-wrapper">
-      <DashboardBar/>
-      
+      <DashboardBar />
       <div className="container">
-      {tasks.map((task) => (
-        <Accordion
-          className="item"
-          expanded={expanded === task.id}
-          onChange={handleChange(task.id)}
-          sx={{
-            "&:before": {
-              display: "none",
-            },
-          }}
-        >
-          <AccordionSummary
-            className="title"
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1bh-content"
-            id="panel1bh-header"
+        {tasks.map((task) => (
+          <Accordion
+            className="item"
+            expanded={expanded === task.id}
+            onChange={handleChange(task.id)}
+            sx={{
+              "&:before": {
+                display: "none",
+              },
+            }}
           >
-            <Typography
-              sx={{ width: "33%", flexShrink: 0, fontWeight: "bold" }}
+            <AccordionSummary
+              className="title"
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1bh-content"
+              id="panel1bh-header"
             >
-              {task.title}
-            </Typography>
-            <Typography sx={{ color: "text.secondary" }}>
-              {task.description}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails className="details">
-            {stages.map((stage) => (
-              <Paper className="paper">{stage.id}</Paper>
-            ))}
-          </AccordionDetails>
-        </Accordion>
-      ))}
+              <Typography
+                sx={{ width: "33%", flexShrink: 0, fontWeight: "bold" }}
+              >
+                {task.title}
+              </Typography>
+              <Typography sx={{ color: "text.secondary" }}>
+                {task.description}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails className="details">
+              {stages.map((stage) => (
+                <Paper className="paper">{stage.id}</Paper>
+              ))}
+            </AccordionDetails>
+          </Accordion>
+        ))}
       </div>
     </div>
   );

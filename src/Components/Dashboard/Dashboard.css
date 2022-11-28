@@ -14,7 +14,6 @@
   border-radius: 10px !important;
   align-items: center;
   width: 700px;
-  outline: 3px solid #2f3c7e;
 }
 
 .title {
@@ -38,7 +37,7 @@
 
 .paper {
   background-color: white !important;
-  border-radius: 20px;
+  border-radius: 20px !important;
   width: 600px;
   height: 80px;
   align-items: center;
