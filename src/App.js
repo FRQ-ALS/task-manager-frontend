@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/system";
 import theme from "./Components/Theme/Theme";
 import { Button } from "@mui/material";
 import AppBar from "./Components/AppBar/AppBar";
+import Dashboard from "./Components/Dashboard/Dashboard";
 import { CssBaseline } from "@mui/material";
 import {
   BrowserRouter as Router,
@@ -23,6 +24,7 @@ function App() {
           <AppBar/>
           <Routes>
             <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
             <Route exact path="/verify/:token" element={<EmailVerification/>}/>
           </Routes>
         </ThemeProvider>
