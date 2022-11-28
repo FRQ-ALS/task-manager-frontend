@@ -5,10 +5,10 @@ import {
   AccordionSummary,
   Typography,
   Paper,
-  Button
+  Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import CssBaseline from "@mui/material/CssBaseline";
+import DashboardBar from "../DashboardBar/DashboardBar";
 
 import "./Dashboard.css";
 
@@ -66,8 +66,10 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="container">
-      <CssBaseline />
+    <div className="dashboard-wrapper">
+      <DashboardBar/>
+      
+      <div className="container">
       {tasks.map((task) => (
         <Accordion
           className="item"
@@ -85,15 +87,15 @@ export default function Dashboard() {
             aria-controls="panel1bh-content"
             id="panel1bh-header"
           >
-            <Typography sx={{ width: "33%", flexShrink: 0, fontWeight:'bold' }}>
+            <Typography
+              sx={{ width: "33%", flexShrink: 0, fontWeight: "bold" }}
+            >
               {task.title}
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
               {task.description}
             </Typography>
-            <Button>LOL</Button>
           </AccordionSummary>
-
           <AccordionDetails className="details">
             {stages.map((stage) => (
               <Paper className="paper">{stage.id}</Paper>
@@ -101,6 +103,7 @@ export default function Dashboard() {
           </AccordionDetails>
         </Accordion>
       ))}
+      </div>
     </div>
   );
 }
