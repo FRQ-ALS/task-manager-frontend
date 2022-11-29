@@ -11,7 +11,7 @@
   background-color: rgb(245, 242, 242);
   margin-right: -30px;
   z-index: 0;
-  animation: rotateX 200ms linear;
+  animation: slideLeft 200ms linear;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -72,13 +72,13 @@
     opacity: 1;
 } */
 
-@keyframes rotateX {
+@keyframes slideLeft {
   0% {
     opacity: 0;
-    transform:translateX(150px)
+    transform:translateX(200px)
   }
   50% {
-    transform:translateX(75px)
+    transform:translateX(100px)
   }
   100% {
     opacity: 1;

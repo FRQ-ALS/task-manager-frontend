@@ -15,7 +15,9 @@ import ProfilePill from "../ProfilePill/ProfilePill";
 export default function Appbar() {
   const [loginToggle, setLoginToggle] = useState(false);
 
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn"));
+  const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem("loggedIn")));
+
+  console.log(loggedIn)
 
   let navigate = useNavigate();
 
@@ -67,7 +69,7 @@ export default function Appbar() {
             </Button>
           </div>
         ) : (
-          <ProfilePill/>
+          <ProfilePill onSetLoggedInStatus={handleLoggedInStatus}/>
         )}
       </div>
       <div container className="loginWindow-wrapper">

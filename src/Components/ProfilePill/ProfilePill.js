@@ -5,19 +5,29 @@ import "./ProfilePill.css";
 
 const menuItems = ["Profile", "Settings", "Dashboard", "Log out"]
 
-export default function ProfilePill() {
+export default function ProfilePill(props) {
   const [menuDrawn, setMenuDrawn] = useState(false);
 
   const handleMenuDraw = (e) => {
     setMenuDrawn(!menuDrawn);
   };
 
+  const handleButtonClick = (e, button) => {
+
+    if(button === "Log out") {
+      localStorage.setItem("loggedIn", false)
+      localStorage.setItem("jwt", "")
+
+      props.onSetLoggedInStatus(false)
+    }
+
+  }
+
 
   function renderMenuItems() {
-
     return (<div className="menu">
       {menuItems.map((item) => (
-        <button className="menu-item">{item}</button>
+        <button onClick={event => handleButtonClick(event, item)} className="menu-item">{item}</button>
       ))}
     </div>);
   }
