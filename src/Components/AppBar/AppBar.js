@@ -9,9 +9,13 @@ import MapsHomeWorkRoundedIcon from "@mui/icons-material/MapsHomeWorkRounded";
 import LockOpenRoundedIcon from "@mui/icons-material/LockOpenRounded";
 import { useNavigate } from "react-router-dom";
 import LoginWindow from "../LoginWindow/LoginWindow";
+import ProfilePill from "../ProfilePill/ProfilePill";
+
 
 export default function Appbar() {
   const [loginToggle, setLoginToggle] = useState(false);
+
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn"));
 
   let navigate = useNavigate();
 
@@ -20,13 +24,18 @@ export default function Appbar() {
   };
 
   const signUpHandler = () => {
-    setLoginToggle(false)
+    setLoginToggle(false);
     navigate("/signup");
   };
 
   const homePageHandler = () => {
     navigate("/home");
   };
+
+  const handleLoggedInStatus = (parameter) => {
+    setLoggedIn(parameter);
+  };
+
 
   return (
     <div>
@@ -36,30 +45,38 @@ export default function Appbar() {
             <MapsHomeWorkRoundedIcon color="secondary" className="homeIcon" />
           </Button>
         </div>
+        {!loggedIn ? (
+          <div className="login-container">
+            <Button
+              onClick={signInHandler}
+              className="button"
+              variant="contained"
+              color="secondary"
+            >
+              SIGN IN
+            </Button>
 
-        <div className="login-container">
-          <Button
-            onClick={signInHandler}
-            className="button"
-            variant="contained"
-            color="secondary"
-          >
-            SIGN IN
-          </Button>
-
-          <Button
-            className="button"
-            variant="contained"
-            color="secondary"
-            onClick={signUpHandler}
-          >
-            {/* <LockOpenRoundedIcon className="lockIcon" color="secondary" /> */}
-            SIGN UP
-          </Button>
-        </div>
+            <Button
+              className="button"
+              variant="contained"
+              color="secondary"
+              onClick={signUpHandler}
+            >
+              {/* <LockOpenRoundedIcon className="lockIcon" color="secondary" /> */}
+              SIGN UP
+            </Button>
+          </div>
+        ) : (
+          <ProfilePill/>
+        )}
       </div>
       <div container className="loginWindow-wrapper">
-        {loginToggle ? <LoginWindow className="loginWindow" /> : null}
+        {loginToggle ? (
+          <LoginWindow
+            onSetLoggedInStatus={handleLoggedInStatus}
+            className="loginWindow"
+          />
+        ) : null}
       </div>
     </div>
   );

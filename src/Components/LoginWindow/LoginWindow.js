@@ -35,6 +35,9 @@ export default function LoginWindow(props) {
         return;
       }
 
+      props.onSetLoggedInStatus(true)
+      localStorage.setItem("loggedIn", true)
+
       response.json().then((responseJson) => {
         console.log(responseJson);
       });
