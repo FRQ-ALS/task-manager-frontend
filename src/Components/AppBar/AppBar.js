@@ -10,9 +10,11 @@ import LockOpenRoundedIcon from "@mui/icons-material/LockOpenRounded";
 import { useNavigate } from "react-router-dom";
 import LoginWindow from "../LoginWindow/LoginWindow";
 import ProfilePill from "../ProfilePill/ProfilePill";
+import NotificationTray from "../NotificationTray/NotificationTray";
 
 export default function Appbar() {
   const [loginWindowToggle, setLoginWindowToggle] = useState(false);
+  const [notiTrayToggle, setNotiTrayToggle] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(
     JSON.parse(localStorage.getItem("loggedIn"))
@@ -33,12 +35,16 @@ export default function Appbar() {
     navigate("/home");
   };
 
+  const handleToggleNotiTray = () => {
+    setNotiTrayToggle(!notiTrayToggle);
+  };
+
   const handleLoggedInStatus = (parameter) => {
     setLoggedIn(parameter);
 
-    if(parameter == true){
-      setLoginWindowToggle(false)
-      navigate("/home")
+    if (parameter == true) {
+      setLoginWindowToggle(false);
+      navigate("/home");
     }
   };
 
@@ -72,7 +78,10 @@ export default function Appbar() {
             </Button>
           </div>
         ) : (
-          <ProfilePill onSetLoggedInStatus={handleLoggedInStatus} />
+          <ProfilePill
+            onToggleNotiTray={handleToggleNotiTray}
+            onSetLoggedInStatus={handleLoggedInStatus}
+          />
         )}
       </div>
 
@@ -82,7 +91,13 @@ export default function Appbar() {
             onSetLoggedInStatus={handleLoggedInStatus}
             className="loginWindow"
           />
-         </div>
+        </div>
+      ) : null}
+
+      {notiTrayToggle ? (
+        <div className="notificationTrayWrapper">
+          <NotificationTray />
+        </div>
       ) : null}
     </div>
   );

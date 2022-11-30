@@ -6,7 +6,7 @@
 
 .menu {
   height: 55px;
-  width: 450px;
+  width: 350px;
   border-radius: 30px 0px 0px 30px;
   background-color: rgb(245, 242, 242);
   margin-right: -30px;
@@ -16,25 +16,25 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  padding-right: 20px ;
+  padding-right: 20px;
 }
 
-.menu-item{
-    /* width: 70px; */
-    cursor: pointer;
-    height: 30px;
-    background-color: #2F3C7E;
-    color: white;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: hidden;
-    border-radius: 10px;
-    /* font-weight:bold ; */
+.menu-item {
+  /* width: 70px; */
+  cursor: pointer;
+  height: 30px;
+  background-color: #2f3c7e;
+  color: white;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  border-radius: 10px;
+  /* font-weight:bold ; */
 }
 
 .profile-container {
-  background-color: #FBEAEB;
+  background-color: #fbeaeb;
   width: 200px;
   height: 55px;
   border-radius: 30px;
@@ -75,28 +75,36 @@
 @keyframes slideLeft {
   0% {
     opacity: 0;
-    transform:translateX(170px)
+    transform: translateX(170px);
   }
   50% {
-    transform:translateX(100px)
+    transform: translateX(100px);
   }
   100% {
     opacity: 1;
-    transform:translateX(0)
-
+    transform: translateX(0);
   }
 }
 
 .notification {
-  height: 20px;
-  width: 20px;
-  background-color: white;
-  border-radius: 50%;
-  color: red;
-  font-weight: bold;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 20px;
+  margin-right: 10px;
+}
+
+.noti-button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
   cursor: pointer;
-  outline: 1px solid red;
+  overflow: hidden;
+  outline: none;
+}
+
+.red-dot{
+  position: absolute;
+  right:17px;
+  top:15px;
+  height: 10px;
+  width: 10px;
+  border-radius:50%;
+  background-color: red;
 }

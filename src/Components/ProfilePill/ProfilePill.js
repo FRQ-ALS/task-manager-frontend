@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
+import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 import "./ProfilePill.css";
 
-const menuItems = [
-  "Profile",
-  "Settings",
-  "Notifications",
-  "Dashboard",
-  "Log out",
-];
+const menuItems = ["Profile", "Settings", "Dashboard", "Log out"];
 
 export default function ProfilePill(props) {
   const [menuDrawn, setMenuDrawn] = useState(false);
-  const [notifications, setNotifications] = useState(2);
+  const [unreadNotifications, setNotifications] = useState(1);
   // /JSON.parse(localStorage.getItem("notifications"))
   const [profileImage, setProfileImage] = useState([]);
 
   const handleMenuDraw = (e) => {
     setMenuDrawn(!menuDrawn);
   };
+
+  const handleNotiClick = (e) => {
+    props.onToggleNotiTray()
+  }
 
   const handleButtonClick = (e, button) => {
     if (button === "Log out") {
@@ -79,9 +79,11 @@ export default function ProfilePill(props) {
           <img className="icon" src={profileImage}></img>
         </div>
         <h1 className="profile-name">Farooq Al-Saadi</h1>
-        {notifications != 0 ? (
-          <div className="notification">{notifications}</div>
-        ) : null}
+      </button>
+
+      <button onClick={handleNotiClick} className="noti-button">
+        <NotificationsIcon color="secondary" className="notification" />
+        {unreadNotifications != 0 ? <div className="red-dot"></div> : null}
       </button>
     </div>
   );

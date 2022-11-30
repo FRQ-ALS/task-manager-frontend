@@ -39,8 +39,12 @@
     backdrop-filter: blur(10px);
 }
 
-
 .loginWindow{
     top: 5%;
- 
+}
+
+.notificationTrayWrapper{
+    position:absolute;
+    right:10px;
+    z-index: 10;
 }
