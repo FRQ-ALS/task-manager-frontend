@@ -5,9 +5,9 @@
   border-radius: 5%;
   font-family: Tahoma;
   color: white;
+  outline: 5px solid white;
   animation: rotateX 500ms linear;
   transform-origin: top center;
-  
   position: absolute;
   display:flex;
   flex-direction: column;

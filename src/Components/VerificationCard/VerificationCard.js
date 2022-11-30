@@ -30,7 +30,7 @@ export default function VerificationCard(props) {
       if (response.status == 200) {
         response.json().then((responseJson) => {
           // console.log(responseJson);
-          localStorage.setItem("userID", responseJson.userID);
+          localStorage.setItem("jwt", responseJson.jwt);
         });
         setUserLocked(false);
         setVerified("verified");

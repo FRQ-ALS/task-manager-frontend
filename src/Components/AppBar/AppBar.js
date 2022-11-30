@@ -11,22 +11,21 @@ import { useNavigate } from "react-router-dom";
 import LoginWindow from "../LoginWindow/LoginWindow";
 import ProfilePill from "../ProfilePill/ProfilePill";
 
-
 export default function Appbar() {
-  const [loginToggle, setLoginToggle] = useState(false);
+  const [loginWindowToggle, setLoginWindowToggle] = useState(false);
 
-  const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem("loggedIn")));
-
-  console.log(loggedIn)
+  const [loggedIn, setLoggedIn] = useState(
+    JSON.parse(localStorage.getItem("loggedIn"))
+  );
 
   let navigate = useNavigate();
 
   const signInHandler = () => {
-    setLoginToggle(!loginToggle);
+    setLoginWindowToggle(!loginWindowToggle);
   };
 
   const signUpHandler = () => {
-    setLoginToggle(false);
+    setLoginWindowToggle(false);
     navigate("/signup");
   };
 
@@ -36,8 +35,12 @@ export default function Appbar() {
 
   const handleLoggedInStatus = (parameter) => {
     setLoggedIn(parameter);
-  };
 
+    if(parameter == true){
+      setLoginWindowToggle(false)
+      navigate("/home")
+    }
+  };
 
   return (
     <div>
@@ -69,17 +72,18 @@ export default function Appbar() {
             </Button>
           </div>
         ) : (
-          <ProfilePill onSetLoggedInStatus={handleLoggedInStatus}/>
+          <ProfilePill onSetLoggedInStatus={handleLoggedInStatus} />
         )}
       </div>
-      <div container className="loginWindow-wrapper">
-        {loginToggle ? (
+
+      {loginWindowToggle ? (
+        <div container className="loginWindowWrapper">
           <LoginWindow
             onSetLoggedInStatus={handleLoggedInStatus}
             className="loginWindow"
           />
-        ) : null}
-      </div>
+         </div>
+      ) : null}
     </div>
   );
 }

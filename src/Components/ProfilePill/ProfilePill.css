@@ -6,7 +6,7 @@
 
 .menu {
   height: 55px;
-  width: 350px;
+  width: 450px;
   border-radius: 30px 0px 0px 30px;
   background-color: rgb(245, 242, 242);
   margin-right: -30px;
@@ -34,7 +34,7 @@
 }
 
 .profile-container {
-  background-color: white;
+  background-color: #FBEAEB;
   width: 200px;
   height: 55px;
   border-radius: 30px;
@@ -75,7 +75,7 @@
 @keyframes slideLeft {
   0% {
     opacity: 0;
-    transform:translateX(200px)
+    transform:translateX(170px)
   }
   50% {
     transform:translateX(100px)
@@ -85,4 +85,18 @@
     transform:translateX(0)
 
   }
+}
+
+.notification {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 50%;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
+  cursor: pointer;
+  outline: 1px solid red;
 }

@@ -39,7 +39,7 @@ export default function LoginWindow(props) {
       localStorage.setItem("loggedIn", true)
 
       response.json().then((responseJson) => {
-        console.log(responseJson);
+        localStorage.setItem("jwt", responseJson.jwt)
       });
     });
   };

@@ -27,14 +27,20 @@
     scale: 1.5;
 }
 
-.loginWindow-container{
-    color:black
+.loginWindowWrapper{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(10px);
 }
 
 
 .loginWindow{
-    position: absolute;
-    right: 15px;
-    top:70px;
-    /* box-shadow: 5px 10px 5px  #888888; */
+    top: 5%;
+ 
 }

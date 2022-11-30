@@ -31,13 +31,12 @@ export default function ImageUploadCard(props) {
     const body = new FormData();
     body.append("file", image);
 
-    var userID = localStorage.getItem("userID");
-    console.log(userID);
+    var jwt = localStorage.getItem("jwt")
 
-    fetch("/api/v1/images/upload", {
+    fetch("/api/v1/images/upload/imageType=profile", {
       credentials: "include",
       method: "POST",
-      headers: {},
+      headers: {"Authorization": "Bearer "+ jwt},
       body: body,
     }).then((response) => {
       if (response.status == 200) {
@@ -68,7 +67,7 @@ export default function ImageUploadCard(props) {
         <label htmlFor="contained-button-file">
           <Button className="image-button" component="span">
             {imageChanged ? (
-              <img className="image" src={createImageURL(image)}></img>
+              <img className="imageChanged" src={createImageURL(image)}></img>
             ) : (
               <img className="image" src={image}></img>
             )}
