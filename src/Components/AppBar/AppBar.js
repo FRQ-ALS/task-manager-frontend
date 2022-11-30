@@ -96,7 +96,7 @@ export default function Appbar() {
 
       {notiTrayToggle ? (
         <div className="notificationTrayWrapper">
-          <NotificationTray />
+          <NotificationTray show={notiTrayToggle} onClickOutSide={event=> setNotiTrayToggle(false)} />
         </div>
       ) : null}
     </div>
