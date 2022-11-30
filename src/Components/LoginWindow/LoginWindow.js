@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CustomTextField from "./../TextField/CustomTextField";
 import { TextField, Button } from "@mui/material";
 import { Alert, Collapse } from "@mui/material";
@@ -10,11 +10,30 @@ export default function LoginWindow(props) {
   const className = "window " + props.className;
   const [alertOepn, setAlertOpen] = useState(false);
   const [alertText, setAlertText] = useState("");
+  const ref = useRef(null);
+  const { onClickOutside } = props;
 
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
+
+  //method that detects whether user has clicked away from window.
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        onClickOutside && onClickOutside();
+        props.onClickOutSide(event);
+      }
+    };
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, [onClickOutside]);
+
+ 
 
   const handleLoginChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -35,17 +54,17 @@ export default function LoginWindow(props) {
         return;
       }
 
-      props.onSetLoggedInStatus(true)
-      localStorage.setItem("loggedIn", true)
+      props.onSetLoggedInStatus(true);
+      localStorage.setItem("loggedIn", true);
 
       response.json().then((responseJson) => {
-        localStorage.setItem("jwt", responseJson.jwt)
+        localStorage.setItem("jwt", responseJson.jwt);
       });
     });
   };
 
   return (
-    <div className={className}>
+    <div ref={ref} className={className}>
       <CustomTextField
         onChange={handleLoginChange}
         name="email"

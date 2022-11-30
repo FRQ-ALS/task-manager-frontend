@@ -7,7 +7,9 @@
     padding-right: 10px;
     padding-bottom:10px;
     padding-top: 10px;
-    animation: appear 200ms linear;
+    animation: rotateX 500ms linear;
+  transform-origin: top center;
+
 }
 
 .thing{
@@ -31,5 +33,20 @@
     100%{
         opacity: 1;
 
+    }
+}
+
+
+@keyframes rotateX {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg);
+    }
+    50% {
+        transform: rotateX(-20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
     }
 }

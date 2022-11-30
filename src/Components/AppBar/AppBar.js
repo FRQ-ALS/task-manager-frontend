@@ -89,16 +89,19 @@ export default function Appbar() {
         <div container className="loginWindowWrapper">
           <LoginWindow
             onSetLoggedInStatus={handleLoggedInStatus}
+            show={loginWindowToggle}
+            onClickOutside={(event) => setLoginWindowToggle(false)}
             className="loginWindow"
           />
         </div>
       ) : null}
 
-      {notiTrayToggle ? (
-        <div className="notificationTrayWrapper">
-          <NotificationTray show={notiTrayToggle} onClickOutSide={event=> setNotiTrayToggle(false)} />
-        </div>
-      ) : null}
+      <div className="notificationTrayWrapper">
+        <NotificationTray
+          show={notiTrayToggle}
+          onClickOutSide={(event) => setNotiTrayToggle(false)}
+        />
+      </div>
     </div>
   );
 }
