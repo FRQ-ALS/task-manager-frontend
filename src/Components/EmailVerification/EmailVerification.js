@@ -16,7 +16,7 @@ export default function EmailVerification(){
             },
             body: token
           })
-    })
+    },[])
 
     return(
         <div>You have confirmed your email address!</div>

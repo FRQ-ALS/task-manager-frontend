@@ -1,108 +1,72 @@
-import React, { useState } from "react";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-  Paper,
-  Button,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import DashboardBar from "../DashboardBar/DashboardBar";
-
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
+import StatusCircle from "../StatusCircle/StatusCircle";
 
 export default function Dashboard() {
-  const [expanded, setExpanded] = useState(false);
+  const [userName, setUserName] = useState(null);
+  const [approval, setApproval] = useState("");
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [data, setData] = useState(null);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
-  const stages = [
+  const tasks = [
     {
       id: 1,
-      title: "Do this.....",
-      description: "And this......",
+      task: "added email service back",
     },
     {
       id: 2,
-      title: "Do this.....",
-      description: "And this......",
+      task: "Do this",
     },
     {
       id: 3,
-      title: "Do this.....",
-      description: "And this......",
-    },
-    {
-      id: 4,
-      title: "Do this.....",
-      description: "And this......",
+      task: "Do that",
     },
   ];
 
-  var tasks = [
-    {
-      id: 1,
-      title: "Build Endpoint",
-      description: "Build endpoint for the login/registration system.",
-    },
-    {
-      id: 2,
-      title: "Test Title 2",
-      description: "Test Description 2",
-    },
-    {
-      id: 3,
-      title: "Test Title 3",
-      description: "Test Description 3",
-    },
-    {
-      id: 4,
-      title: "Test Title 4",
-      description: "Test Description 4",
-    },
-  ];
+  
+
+  useEffect(() => {
+    console.log("Calling useEffect...");
+    fetch("/api/v1/account/github", {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        setUserName(responseJson[0].author.login);
+        setData(responseJson)
+        if(data!=null){
+            setDataLoaded(true)
+        }
+      });
+  }, []);
+
+  function mapData(values, phrase) {
+    values.forEach((value) => {
+      if (value.commit.message.includes(phrase)) {
+        return true;
+      }
+    });
+    return false;
+  }
+
+
+ 
 
   return (
-    <div className="dashboard-wrapper">
-      <DashboardBar />
-      <div className="container">
-        {tasks.map((task) => (
-          <Accordion
-            className="item"
-            expanded={expanded === task.id}
-            onChange={handleChange(task.id)}
-            sx={{
-              "&:before": {
-                display: "none",
-              },
-            }}
-          >
-            <AccordionSummary
-              className="title"
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
-            >
-              <Typography
-                sx={{ width: "33%", flexShrink: 0, fontWeight: "bold" }}
-              >
-                {task.title}
-              </Typography>
-              <Typography sx={{ color: "text.secondary" }}>
-                {task.description}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails className="details">
-              {stages.map((stage) => (
-                <Paper className="paper">{stage.id}</Paper>
-              ))}
-            </AccordionDetails>
-          </Accordion>
-        ))}
-      </div>
+    <div id="taskwrapper">
+      {tasks.map((task) => (
+        <div id="container" className="">
+          <div>{task.task}</div>
+          <StatusCircle
+            taskId={task.id}
+            isVerified={mapData(data,task.task)}
+          />
+        </div>
+      ))}
     </div>
   );
 }
