@@ -23,10 +23,7 @@ export default function Dashboard() {
     },
   ];
 
-  
-
-  useEffect(() => {
-    console.log("Calling useEffect...");
+  const getData = () => {
     fetch("/api/v1/account/github", {
       credentials: "include",
       method: "GET",
@@ -35,38 +32,50 @@ export default function Dashboard() {
       },
     })
       .then((response) => response.json())
-      .then((responseJson) => {
-        setUserName(responseJson[0].author.login);
-        setData(responseJson)
-        if(data!=null){
-            setDataLoaded(true)
-        }
+      .then((data) => {
+        setData(data);
+        setDataLoaded(true)
       });
+  };
+
+  useEffect(() => {
+
+    getData();
   }, []);
 
-  function mapData(values, phrase) {
-    values.forEach((value) => {
-      if (value.commit.message.includes(phrase)) {
-        return true;
+  function checkVerified(phrase){
+    for(let i = 0; i < data.length; i++){
+      if(data[i].commit.message.includes(phrase)){
+        return "approved"
       }
-    });
-    return false;
+    }
+
+    return ""
+
   }
 
 
- 
+  function conditionalRender() {
+    if (!dataLoaded) {
 
-  return (
-    <div id="taskwrapper">
-      {tasks.map((task) => (
-        <div id="container" className="">
-          <div>{task.task}</div>
-          <StatusCircle
-            taskId={task.id}
-            isVerified={mapData(data,task.task)}
-          />
+      return <div>Loading...</div>;
+    }
+
+    if (dataLoaded) {
+      return (
+        <div id="taskwrapper">
+          {tasks.map((task) => (
+            <div id="container" className="">
+              <div>{task.task}</div>
+              <StatusCircle taskId={task.id}
+              variant={checkVerified(task.task)} />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  );
+      );
+    }
+  }
+
+
+  return(<div>{conditionalRender()}</div>)
 }

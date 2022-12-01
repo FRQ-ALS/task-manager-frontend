@@ -6,5 +6,5 @@
 }
 
 .approved{
-    outline: 2px solid green;
+    background-color: green !important;
 }

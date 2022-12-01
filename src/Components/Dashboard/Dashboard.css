@@ -21,13 +21,3 @@
    align-items: center;
 }
 
-#circle {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background-color: red;
-}
-
-.approved{
-    outline: 2px solid green;
-}
