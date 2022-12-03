@@ -8,7 +8,7 @@ const menuItems = ["Profile", "Settings", "Dashboard", "Log out"];
 
 export default function ProfilePill(props) {
   const [menuDrawn, setMenuDrawn] = useState(false);
-  const [unreadNotifications, setNotifications] = useState(1);
+  const [unreadNotifications, setNotifications] = useState(0);
   // /JSON.parse(localStorage.getItem("notifications"))
   const [profileImage, setProfileImage] = useState([]);
 

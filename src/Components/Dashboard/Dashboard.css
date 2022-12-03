@@ -1,23 +1,10 @@
-#taskwrapper{
-    position: absolute;
-    display: flex;
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+#dashboard-container{
+position: absolute;
+height: 100%;
+width: 100%;
+display: flex;
+gap: 20px;
 }
 
-#container {
-   height: 100px;
-   width: 300px;
-   border-radius:20px;
-   background-color: white; 
-   font-weight: bold;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-}
+
 
