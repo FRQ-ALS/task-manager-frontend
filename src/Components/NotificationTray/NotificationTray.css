@@ -7,8 +7,8 @@
     padding-right: 10px;
     padding-bottom:10px;
     padding-top: 10px;
-    animation: rotateX 500ms linear;
-  transform-origin: top center;
+    animation: rollDown 500ms linear;
+    transform-origin: top center;
 
 }
 
@@ -37,7 +37,7 @@
 }
 
 
-@keyframes rotateX {
+@keyframes rollDown {
     0% {
         opacity: 0;
         transform: rotateX(-90deg);
