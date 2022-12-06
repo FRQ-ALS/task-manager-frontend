@@ -1,25 +1,28 @@
 .alert{
-    color: #2F3C7E;
+    position: inherit;
+    color:black;
+    background-color: white;
     font-weight: bold;
-    background-color: #FBEAEB;
-    font-size: 1em;
-    /* padding-top: 10px; */
-    /* padding-bottom: 10px; */
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
-    outline: 1px solid black;
-    /* animation: pop 250ms linear; */
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    animation: dropDown 250ms linear;
 }
 
-@keyframes pop{
+#container{
+    position: absolute;
+}
+
+@keyframes dropDown{
     0% {
         opacity: 0;
-        transform: scale(0.5, 0.5);
+        transform: translateY(-30px);
       }
-    
+      50% {
+        transform: translateY(-10px);
+      }
       100% {
         opacity: 1;
-        transform: scale(1, 1);
+        transform: translateY(0);
       }
-  }
+}

@@ -1,0 +1,32 @@
+#housing{
+    width: 70px;
+    height: 30px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#switch{
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: rgb(9, 19, 121);
+    background: linear-gradient(
+      63deg,
+      rgba(9, 19, 121, 1) 0%,
+      rgba(6, 27, 163, 1) 21%,
+      rgba(0, 44, 255, 1) 100%
+    );
+    margin-left: 2px;
+    transition: 0.2s;
+}
+
+.private{
+    margin-left: 2px !important;
+}
+
+.public{
+    margin-left: 40px !important;
+}

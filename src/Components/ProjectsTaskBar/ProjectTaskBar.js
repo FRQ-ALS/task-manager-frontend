@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProjectTaskBar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
-
-import AddProjectDialog from "../AddProjectDialog/AddProjectDialog";
 
 export default function ProjectTaskBar() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false)
 
-  const handleAddButton = () => {
-    if (dialogOpen === true) return;
+  const navigate = useNavigate()
 
-    setDialogOpen(!dialogOpen);
+  const handleAddButton = () => {
+    navigate("/new")
   };
 
   const handleSearchButton = () => {
@@ -26,10 +25,6 @@ export default function ProjectTaskBar() {
         {searchOpen ? <input id="input"></input> : null}
         <AddIcon onClick={handleAddButton} className="button" />
       </div>
-      <AddProjectDialog
-        show={dialogOpen}
-        onClickOutside={(event) => setDialogOpen(false)}
-      />
-    </div>
+      </div>
   );
 }
