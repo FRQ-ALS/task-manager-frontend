@@ -68,7 +68,7 @@ export default function ProjectInvitation(props) {
         <div id="invFormContainer">
           <div id="expiryContainer">
             <label id="text" for="birthday">
-              When should the invite expire?
+              Set invite expiry date:
             </label>
             <input
               onChange={handleDate}
@@ -80,7 +80,7 @@ export default function ProjectInvitation(props) {
 
           <div id="expiryContainer">
             <label id="text" for="birthday">
-              How many uses should the invite have?
+              Set maximum uses: 
             </label>
             <CustomTextField
               onChange={handleMaxNumber}
