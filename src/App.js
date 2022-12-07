@@ -16,6 +16,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import EmailVerification from "./Components/EmailVerification/EmailVerification";
 import ProjectView from "./Components/ProjectView/ProjectView";
 import AddProjectPage from "./Components/AddProjectPage/AddProjectPage";
+import JoinProjectCard from "./Components/JoinProjectCard/JoinProjectCard";
 
 
 
@@ -30,10 +31,10 @@ function App() {
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route exact path="/verify/:token" element={<EmailVerification/>}/>
+            <Route exact path="/joinProject=:token" element={<JoinProjectCard/>}/>
             <Route exact path="/project/:id" element={<ProjectView/>}/>
             <Route exact path="/new" element={<AddProjectPage/>}/>
-
-
+      
           </Routes>
         </ThemeProvider>
       </Router>

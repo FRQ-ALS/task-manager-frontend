@@ -21,6 +21,12 @@
 
 }
 
+.textfield::-webkit-outer-spin-button,
+.textfield::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .textfield:focus {
     outline: none;
   }

@@ -1,5 +1,4 @@
 .alert{
-    position: inherit;
     color:black;
     background-color: white;
     font-weight: bold;
@@ -9,9 +8,6 @@
     animation: dropDown 250ms linear;
 }
 
-#container{
-    position: absolute;
-}
 
 @keyframes dropDown{
     0% {

@@ -1,3 +1,8 @@
+#pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #form-container {
   height: 60%;
   width: 100%;
@@ -11,37 +16,36 @@
   gap: 40px;
 }
 
-#fieldContainer{
-  display:flex;
+#fieldContainer {
+  display: flex;
   flex-direction: row;
   align-items: center;
   width: 800px;
-  gap:20px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.ProjectName{
+.ProjectName {
   width: 475px;
   color: white;
 }
-.ProjectDesc{
+.ProjectDesc {
   width: 800px;
-
 }
 
-#switchContainer{
-  display:flex;
+#switchContainer {
+  display: flex;
   flex-direction: row;
   gap: 10px;
 }
 
-.label{
+.label {
   font-weight: bold;
   font-size: 1em;
   color: white;
 }
 
-#submit{
+#submit {
   border: none;
   height: 30px;
   width: 120px;
@@ -71,4 +75,71 @@
     opacity: 1;
     transform: rotateX(0deg);
   }
+}
+.alert {
+  position: absolute;
+  margin-top: 5px;
+}
+
+#linkCardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#linkCard {
+  width: 600px;
+  height: 200px;
+  background: rgb(9, 19, 121);
+  background: linear-gradient(
+    63deg,
+    rgba(9, 19, 121, 1) 0%,
+    rgba(6, 27, 163, 1) 21%,
+    rgba(0, 44, 255, 1) 100%
+  );
+  border-radius: 20px;
+  margin-top: 100px;
+  animation: rollDown 250ms linear;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:20px
+}
+
+#linkText {
+  font-weight: bold;
+  color: white;
+  outline: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  margin:0px;
+}
+
+#linkHeader {
+  font-weight: bold;
+  color: white;
+  margin:0px;
+}
+
+#linkButton {
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  background: rgb(9, 19, 121);
+  background: linear-gradient(
+    63deg,
+    rgba(9, 19, 121, 1) 0%,
+    rgba(6, 27, 163, 1) 21%,
+    rgba(0, 44, 255, 1) 100%
+  );
+  width: 80px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  outline: 2px solid white;
+}
+
+#linkButton:active {
+  scale: 0.9;
 }
