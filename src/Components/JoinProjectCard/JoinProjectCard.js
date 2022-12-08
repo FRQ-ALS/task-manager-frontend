@@ -3,16 +3,14 @@ import { useParams } from "react-router-dom";
 
 import "./JoinProject.css";
 
-const projects = [1, 2, 3, 4, 5, 6, 7, 8];
-const collaborators = [1, 2, 3, 4];
-
 export default function JoinProjectCard() {
   const params = useParams();
   const jsonArray = JSON.stringify(params);
   const token = JSON.parse(jsonArray).token;
   const [projectData, setProjectData] = useState("");
-  const [profileImage, setProfileImage] = useState([]);
+  const [profiles, setProfiles] = useState([]);
 
+  const collaborators = [];
 
   const taskStatus = [
     {
@@ -42,9 +40,9 @@ export default function JoinProjectCard() {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
+        // console.log(responseJson);`
         setProjectData(responseJson);
-        fetchImage()
+        fetchCollaboratorImages(responseJson.collaborators);
       });
   }, []);
 
@@ -53,8 +51,6 @@ export default function JoinProjectCard() {
     let invitationToken = token;
 
     let body = { projectId, invitationToken };
-
-    console.log(body);
 
     fetch("/api/v1/projects/joinProject", {
       credentials: "include",
@@ -74,21 +70,28 @@ export default function JoinProjectCard() {
   };
 
 
-  const fetchImage = async () => {
+
+  const fetchCollaboratorImages = async (users) => {
     var jwt = localStorage.getItem("jwt");
-    var imageURL;
 
-    const response = await fetch("/api/v1/images/download/" + 1, {
-      credentials: "include",
-      method: "GET",
-      headers: { Authorization: `Bearer ${jwt}`},
-    });
+    for (const user of users) {
+      const response = await fetch(`/api/v1/images/download/${user.userID}`, {
+        credentials: "include",
+        method: "GET",
+        headers: { Authorization: `Bearer ${jwt}` },
+      });
 
-    const imageBlob = await response.blob();
-    const imageObjectURL = URL.createObjectURL(imageBlob);
-    setProfileImage(imageObjectURL)
+      const imageBlob = await response.blob();
+      const imageObjectURL = URL.createObjectURL(imageBlob);
+
+      let x = {
+        userId: user.userID,
+        imageURL: imageObjectURL,
+      };
+      collaborators.push(x);
+    }
+    setProfiles(collaborators);
   };
-
 
   return (
     <div id="joinProjectContainer">
@@ -107,12 +110,9 @@ export default function JoinProjectCard() {
           ))}
         </div>
         <div id="collaborators">
-          {collaborators.map((user) => (
+          {profiles.map((profile) => (
             <div id="user">
-              <img
-                id="image"
-                src={profileImage}
-              ></img>
+              <img id="image" src={profile.imageURL}></img>
             </div>
           ))}
         </div>
