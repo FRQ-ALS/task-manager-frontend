@@ -1,11 +1,18 @@
-.window {
+#loginScreenContainer{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#loginContainer {
   height: 400px;
   width: 300px;
-  background-color: #2f3c7e;
-  border-radius: 5%;
+
+  /* background-color: #2c2e33; */
+  border-radius: 5px;
   font-family: Tahoma;
   color: white;
-  outline: 5px solid white;
   animation: appear 200ms linear;
   /* transform-origin: top center; */
   position: absolute;
@@ -19,10 +26,14 @@
 
 .login{
     width: 230px;
+    /* background-color: white !important; */
 }
 
-.signin-button{
-    font-weight:bold !important;
+#signInButton123{
+    width: 230px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
 }
 
 .link{

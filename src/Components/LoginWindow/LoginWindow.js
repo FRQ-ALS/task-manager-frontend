@@ -10,30 +10,12 @@ export default function LoginWindow(props) {
   const className = "window " + props.className;
   const [alertOepn, setAlertOpen] = useState(false);
   const [alertText, setAlertText] = useState("");
-  const ref = useRef(null);
   const { onClickOutside } = props;
 
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
-
-  //method that detects whether user has clicked away from window.
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        onClickOutside && onClickOutside();
-        props.onClickOutSide(event);
-      }
-    };
-    document.addEventListener("click", handleClickOutside, true);
-    return () => {
-      document.removeEventListener("click", handleClickOutside, true);
-    };
-  }, [onClickOutside]);
-
- 
 
   const handleLoginChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -54,7 +36,7 @@ export default function LoginWindow(props) {
         return;
       }
 
-      props.onSetLoggedInStatus(true);
+      // props.onSetLoggedInStatus(true);
       localStorage.setItem("loggedIn", true);
 
       response.json().then((responseJson) => {
@@ -64,37 +46,42 @@ export default function LoginWindow(props) {
   };
 
   return (
-    <div ref={ref} className={className}>
-      <CustomTextField
-        onChange={handleLoginChange}
-        name="email"
-        placeholder="Email"
-        className="login"
-      ></CustomTextField>
+    <div id="loginScreenContainer">
+      <div id="loginContainer" className={className}>
+        <CustomTextField
+          id="emailField"
+          onChange={handleLoginChange}
+          name="email"
+          placeholder="Email"
+          className="login"
+        ></CustomTextField>
 
-      <CustomTextField
-        onChange={handleLoginChange}
-        name="password"
-        type="password"
-        placeholder="Password"
-        className="login"
-      ></CustomTextField>
-      <Collapse in={alertOepn}>
-        <Alert className="login-alert" severity="error">
-          {alertText}
-        </Alert>
-      </Collapse>
-      <Button
-        onClick={handleLoginSubmit}
-        variant="contained"
-        color="secondary"
-        className="signin-button"
-      >
-        SIGN IN
-      </Button>
-      <a className="link" href="/">
-        Forgot password?
-      </a>
+        <CustomTextField
+          id="passwordField"
+          onChange={handleLoginChange}
+          name="password"
+          type="password"
+          placeholder="Password"
+          className="login"
+        ></CustomTextField>
+        <Collapse in={alertOepn}>
+          <Alert className="login-alert" severity="error">
+            {alertText}
+          </Alert>
+        </Collapse>
+        <button
+          onClick={handleLoginSubmit}
+          id="signInButton123"
+          variant="contained"
+          color="secondary"
+          // className="signin-button"
+        >
+          SIGN IN
+        </button>
+        <a className="link" href="/">
+          Forgot password?
+        </a>
+      </div>
     </div>
   );
 }

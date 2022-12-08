@@ -1,11 +1,6 @@
 #profile-container {
-  background: rgb(9, 19, 121);
-  background: linear-gradient(
-    63deg,
-    rgba(9, 19, 121, 1) 0%,
-    rgba(6, 27, 163, 1) 21%,
-    rgba(0, 44, 255, 1) 100%
-  );
+  background-color: #2c2e33;
+
   width: 200px;
   height: 55px;
   border-radius: 5px;

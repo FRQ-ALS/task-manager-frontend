@@ -1,16 +1,9 @@
 .textfield{
     color: white;
-    background: rgb(9, 19, 121);
-    background: linear-gradient(
-      63deg,
-      rgba(9, 19, 121, 1) 0%,
-      rgba(6, 27, 163, 1) 21%,
-      rgba(0, 44, 255, 1) 100%
-    );
+    /* background-color: #2c2e33; */
     height: 55px;
     width: 400px;
     font-size: 1.7em;
-    /* outline: 1px solid white; */
     border-radius: 5px;
     font-family: Helvetica;
     border-top-style: hidden;
@@ -18,17 +11,21 @@
     border-left-style: hidden;
     border-bottom-style: hidden;
     padding-left: 10px;
-
 }
 
-.textfield::-webkit-outer-spin-button,
-.textfield::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.textfield:-webkit-autofill,
+.textfield:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+.textfield[data-autocompleted] {
+    background-color: transparent !important;
+}
+.textfield:-webkit-autofill{
+    -webkit-text-fill-color: white !important;
 }
 
 .textfield:focus {
-    outline: none;
+    outline: 2px solid white;
   }
 
 #error{

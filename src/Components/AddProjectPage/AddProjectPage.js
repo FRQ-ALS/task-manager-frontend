@@ -149,16 +149,16 @@ export default function AddProjectPage(props) {
           <div id="form-container">
             <div id="fieldContainer">
               <CustomTextField
-                id="textfield"
-                className="ProjectName"
+                id="projectName"
+                className="textfield"
                 placeholder="Project Name*"
                 onChange={handleNameChange}
               />
               <div className="label">Owned by:</div>
               <OwnerTab />
               <CustomTextField
-                id="textfield"
-                className="ProjectDesc"
+                id="projectDesc"
+                className="textfield"
                 placeholder="Project Description(optional)"
                 onChange={handleDescriptionChange}
               />

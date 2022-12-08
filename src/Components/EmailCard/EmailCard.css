@@ -9,27 +9,18 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    animation: fade-in 500ms linear;
-    /* transform-origin: top center; */
+    animation: emailFadeIn 500ms linear;
+    background-color: white;
+
   }
   
   .button{
       height: 55px;
   }
   
-  /* .alert{
-    position: absolute;
-    left:50%;
-    top: 50%;
-    transform: translate(-50%, 870%);
-  } */
-  
-  /* .textfield{
-    width: 400px;
-  } */
 
 
-  @keyframes fade-in {
+  @keyframes emailFadeIn {
     0% {
         opacity: 0;
         /* transform: rotateY(-90deg); */

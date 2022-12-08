@@ -1,5 +1,5 @@
 import { Button, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AppBar } from "@mui/material";
 import { Container } from "@mui/material";
 import "./AppBar.css";
@@ -23,7 +23,7 @@ export default function Appbar() {
   let navigate = useNavigate();
 
   const signInHandler = () => {
-    setLoginWindowToggle(!loginWindowToggle);
+    navigate("/login")
   };
 
   const signUpHandler = () => {
@@ -53,29 +53,25 @@ export default function Appbar() {
       <div disableGutters={true} variant="regular" className="main">
         <div container className="home-container">
           <Button onClick={homePageHandler}>
-            <MapsHomeWorkRoundedIcon color="secondary" className="homeIcon" />
+            <MapsHomeWorkRoundedIcon className="homeIcon" />
           </Button>
         </div>
         {!loggedIn ? (
           <div className="login-container">
-            <Button
+            <button
+              id="signInButton"
               onClick={signInHandler}
-              className="button"
-              variant="contained"
-              color="secondary"
+        
             >
               SIGN IN
-            </Button>
+            </button>
 
-            <Button
-              className="button"
-              variant="contained"
-              color="secondary"
+            <button
+              id="signInButton"
               onClick={signUpHandler}
             >
-              {/* <LockOpenRoundedIcon className="lockIcon" color="secondary" /> */}
               SIGN UP
-            </Button>
+            </button>
           </div>
         ) : (
           <ProfilePill

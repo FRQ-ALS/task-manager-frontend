@@ -1,58 +1,73 @@
-.main{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height:80px;
-    /* background-color: #2F3C7E; */
-
-    background: rgb(9, 19, 121);
-    background: linear-gradient(
-      63deg,
-      rgba(9, 19, 121, 1) 0%,
-      rgba(6, 27, 163, 1) 21%,
-      rgba(0, 44, 255, 1) 100%
-    );
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: #2c2e33;
+  /* background: rgb(9, 19, 121);
+  background: linear-gradient(
+    63deg,
+    rgba(9, 19, 121, 1) 0%,
+    rgba(6, 27, 163, 1) 21%,
+    rgba(0, 44, 255, 1) 100%
+  ); */
 }
 
 .login-container {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    margin-right: 10px;
-
+  display: flex;
+  flex-direction: row;
+  margin-right: 30px;
+  gap: 20px;
 }
 
-.button{
-    font-weight: bold !important;
-    height:40px !important;
+#signInButton {
+  font-weight: bold;
+  height: 35px;
+  border: none;
+  width: 80px;
+  border-radius: 10px;
+  color: white;
+  outline: 2px solid white;
+  background: rgb(9, 19, 121);
+  background: linear-gradient(
+    63deg,
+    rgba(9, 19, 121, 1) 0%,
+    rgba(6, 27, 163, 1) 21%,
+    rgba(0, 44, 255, 1) 100%
+  );
+}
+
+#signInButton:active {
+  scale: 0.9;
 }
 
 .homeIcon {
-    scale: 1.5;
+  scale: 1.5;
+  color: white;
 }
 
-.lockIcon{
-    scale: 1.5;
+.lockIcon {
+  scale: 1.5;
 }
 
-.loginWindowWrapper{
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(10px);
+.loginWindowWrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(10px);
 }
 
-.loginWindow{
-    top: 5%;
+.loginWindow {
+  top: 5%;
 }
 
-.notificationTrayWrapper{
-    position:fixed;
-    right:10px;
-    z-index: 10;
+.notificationTrayWrapper {
+  position: fixed;
+  right: 10px;
+  z-index: 10;
 }

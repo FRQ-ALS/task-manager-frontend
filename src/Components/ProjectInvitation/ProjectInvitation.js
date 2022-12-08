@@ -73,8 +73,8 @@ export default function ProjectInvitation(props) {
             <input
               onChange={handleDate}
               type="date"
-              id="birthday"
-              name="birthday"
+              id="expiryday"
+              name="expiryday"
             />
           </div>
 

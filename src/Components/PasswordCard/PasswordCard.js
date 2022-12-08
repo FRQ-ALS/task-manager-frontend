@@ -52,7 +52,7 @@ export default function PasswordCard(props) {
   return (
     <div>
       <Paper
-        sx={{ backgroundColor: "#2F3C7E", borderRadius: 5 }}
+        sx={{ backgroundColor: "#FFFFF" }}
         className="password-container"
       >
         <CustomTextField

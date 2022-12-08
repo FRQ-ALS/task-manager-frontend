@@ -9,6 +9,7 @@ export default function JoinProjectCard() {
   const token = JSON.parse(jsonArray).token;
   const [projectData, setProjectData] = useState("");
   const [profiles, setProfiles] = useState([]);
+  const [owner, setOwner] = useState("")
 
   const collaborators = [];
 
@@ -40,14 +41,15 @@ export default function JoinProjectCard() {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        // console.log(responseJson);`
+        console.log(responseJson);
         setProjectData(responseJson);
-        fetchCollaboratorImages(responseJson.collaborators);
+        fetchCollaboratorImages(responseJson.collaboratorUserIds);
+        setOwner(responseJson.owner)
       });
   }, []);
 
   const handleJoinButton = (e) => {
-    let projectId = projectData.projectID;
+    let projectId = projectData.projectId;
     let invitationToken = token;
 
     let body = { projectId, invitationToken };
@@ -75,7 +77,7 @@ export default function JoinProjectCard() {
     var jwt = localStorage.getItem("jwt");
 
     for (const user of users) {
-      const response = await fetch(`/api/v1/images/download/${user.userID}`, {
+      const response = await fetch(`/api/v1/images/download/${user}`, {
         credentials: "include",
         method: "GET",
         headers: { Authorization: `Bearer ${jwt}` },
@@ -97,7 +99,7 @@ export default function JoinProjectCard() {
     <div id="joinProjectContainer">
       <div id="joinProjectCard">
         <h1 id="heading">{projectData.projectTitle}</h1>
-        {/* <p id="owner">Owned by:{projectData.owner.email}</p> */}
+        <p id="owner">Owned by:{owner.email}</p>
 
         <div id="status-container">
           {taskStatus.map((status, index) => (

@@ -14,7 +14,7 @@ palette : {
         contrastText: "#2F3C7E"
     },
     background: {
-        default: "#2c2e33"
+        default: "#121212"
         // default: "#FFFFFF"
         
       },
