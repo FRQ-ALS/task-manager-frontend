@@ -44,7 +44,6 @@ export default function ProfilePill(props) {
 
     const imageBlob = await response.blob();
     const imageObjectURL = URL.createObjectURL(imageBlob);
-
     setProfileImage(imageObjectURL);
   };
 
