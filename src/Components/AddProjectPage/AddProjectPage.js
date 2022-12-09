@@ -8,6 +8,7 @@ import CustomAlert from "../CustomAlert/CustomAlert";
 import { useNavigate } from "react-router-dom";
 import ProjectInvitation from "../ProjectInvitation/ProjectInvitation";
 import { render } from "@testing-library/react";
+import useAlert from "../../Hooks/AlertHook";
 
 const NAME_TAKEN_MESSAGE =
   "A project with this name already exists on this account, please enter another name.";
@@ -17,6 +18,7 @@ const BELOW_ZERO_MESSAGE = "The maximum number of uses cannot be 0 or lower";
 const INVALID_DATE_MESSAGE = "The selected date must be from tomorrow onwards";
 
 export default function AddProjectPage(props) {
+  const { setAlert } = useAlert();
   var jwt = localStorage.getItem("jwt");
 
   const [projectName, setProjectName] = useState("");
@@ -50,14 +52,10 @@ export default function AddProjectPage(props) {
     // copyText.select()
     // copyText.selectionRange(0,99999)
     navigator.clipboard.writeText(copyText);
-    printAlert("Copied to clipboard!");
+    setAlert("Copied to clipboard!");
   };
 
   const handleSubmit = (e) => {
-    if (invitation.isToggled) {
-      validateInvitation(invitation);
-    }
-
     let inviteToggled = invitation.inviteToggled;
     let expiry = invitation.expiry;
     let maximumUses = invitation.maximumUses;
@@ -71,13 +69,6 @@ export default function AddProjectPage(props) {
       maximumUses,
     };
 
-    console.log(body);
-
-    if (projectName == "") {
-      printAlert(FIELD_EMPTY_MESSAGE);
-      return;
-    }
-
     fetch("/api/v1/projects/addproject", {
       credentials: "include",
       method: "POST",
@@ -86,44 +77,23 @@ export default function AddProjectPage(props) {
         Authorization: `Bearer ${jwt}`,
       },
       body: JSON.stringify(body),
-    }).then((response) => {
-      if (response.status == 406) {
-        printAlert(NAME_TAKEN_MESSAGE);
-      }
+    })
+      .then((response) => {
 
-      if (response.status == 200) {
-        response.json().then((responseJson) => {
-          setToken(responseJson.token);
-        });
-        // navigate("/dashboard");
-        setPageToggle(false);
-      }
-    });
+        if (!response.ok){
+          response.text().then((text) => setAlert(text, "error"));
+        }
+          if(response.ok){
+          {inviteToggled ? (response.json().then((responseJson) =>{
+            setToken(responseJson.token)
+            setPageToggle(false)
+          })): navigate("/dashboard")}
+          }
+
+      }).catch((error) => {
+        setAlert(error.message);
+      });
   };
-
-  function printAlert(message) {
-    setShowAlert(true);
-    setAlertMessage(message);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 5000);
-  }
-
-  function validateInvitation(invite) {
-    if (invite.maximumUses <= 0) {
-      printAlert(BELOW_ZERO_MESSAGE);
-      return;
-    }
-
-    const expiryDate = new Date(invite.expiry);
-
-    let today = new Date();
-
-    if (expiryDate <= today) {
-      printAlert(INVALID_DATE_MESSAGE);
-      return;
-    }
-  }
 
   function renderLinkCard() {
     let link = `localhost:3000/joinProject=${token}`;
@@ -144,7 +114,7 @@ export default function AddProjectPage(props) {
   return (
     <>
       <div id="pageContainer">
-        <CustomAlert enabled={showAlert} message={alertMessage}></CustomAlert>
+        {/* <CustomAlert enabled={showAlert} message={alertMessage}></CustomAlert> */}
         {pageToggle ? (
           <div id="form-container">
             <div id="fieldContainer">

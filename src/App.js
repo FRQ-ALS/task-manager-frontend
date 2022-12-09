@@ -19,6 +19,7 @@ import AddProjectPage from "./Components/AddProjectPage/AddProjectPage";
 import JoinProjectCard from "./Components/JoinProjectCard/JoinProjectCard";
 import ChatGPT from "./Components/ChatGPT/ChatGPT";
 import LoginWindow from "./Components/LoginWindow/LoginWindow";
+import CustomAlert from "./Components/CustomAlert/CustomAlert";
 
 
 
@@ -30,7 +31,8 @@ function App() {
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AppBar/>
+          <AppBar />
+          <CustomAlert id="alert"/>
           <Routes>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>

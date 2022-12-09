@@ -76,10 +76,10 @@
     transform: rotateX(0deg);
   }
 }
-.alert {
+/* .alert {
   position: absolute;
   margin-top: 5px;
-}
+} */
 
 #linkCardContainer {
   display: flex;

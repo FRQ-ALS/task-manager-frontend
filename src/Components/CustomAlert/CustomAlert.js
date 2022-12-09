@@ -1,14 +1,18 @@
 import React from "react";
 import "./CustomAlert.css";
+import useAlert from "../../Hooks/AlertHook"; 
 
 export default function CustomAlert(props) {
-  const className = "alert " + props.className;
+
+  const {text, type} = useAlert()
+
+  const id = "alert " + props.id;
 
   return (
     <>
-      {props.enabled ? (
-        <div id="alert" className={className}>
-          {props.message}
+      {text ? (
+        <div id="alert" className={type}>
+          {text}
         </div>
       ) : null}
     </>
