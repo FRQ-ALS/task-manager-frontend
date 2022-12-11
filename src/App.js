@@ -20,10 +20,13 @@ import JoinProjectCard from "./Components/JoinProjectCard/JoinProjectCard";
 import ChatGPT from "./Components/ChatGPT/ChatGPT";
 import LoginWindow from "./Components/LoginWindow/LoginWindow";
 import CustomAlert from "./Components/CustomAlert/CustomAlert";
+import useAuth from "./Hooks/AuthHook";
 
 
 
 function App() {
+
+  const {auth} = useAuth();
 
 
   return (
@@ -31,7 +34,7 @@ function App() {
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AppBar />
+          <AppBar setLogin={auth} />
           <CustomAlert id="alert"/>
           <Routes>
             <Route path="/signup" element={<SignUp/>}/>

@@ -1,24 +1,30 @@
 import { Button, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { AppBar } from "@mui/material";
-import { Container } from "@mui/material";
 import "./AppBar.css";
-import { Grid } from "@mui/material";
-import { Toolbar } from "@mui/material";
 import MapsHomeWorkRoundedIcon from "@mui/icons-material/MapsHomeWorkRounded";
-import LockOpenRoundedIcon from "@mui/icons-material/LockOpenRounded";
 import { useNavigate } from "react-router-dom";
 import LoginWindow from "../LoginWindow/LoginWindow";
 import ProfilePill from "../ProfilePill/ProfilePill";
 import NotificationTray from "../NotificationTray/NotificationTray";
+import useAuth from "../../Hooks/AuthHook";
 
-export default function Appbar() {
+
+export default function Appbar(props) {
+  console.log(props.setLogin)
   const [loginWindowToggle, setLoginWindowToggle] = useState(false);
   const [notiTrayToggle, setNotiTrayToggle] = useState(false);
 
-  const [loggedIn, setLoggedIn] = useState(
-    JSON.parse(localStorage.getItem("loggedIn"))
-  );
+  const {setAuth, auth} = useAuth();
+  
+  // const [loggedIn, setLoggedIn] = useState(
+  //   JSON.parse(localStorage.getItem("loggedIn"))
+  // );
+
+
+  // useEffect(()=>{
+  //   setLoggedIn(JSON.parse(localStorage.getItem("loggedIn")))
+  // }, [localStorage.getItem("loggedIn")])
+
 
   let navigate = useNavigate();
 
@@ -39,14 +45,14 @@ export default function Appbar() {
     setNotiTrayToggle(!notiTrayToggle);
   };
 
-  const handleLoggedInStatus = (parameter) => {
-    setLoggedIn(parameter);
+  // const handleLoggedInStatus = (parameter) => {
+  //   setLoggedIn(parameter);
 
-    if (parameter == true) {
-      setLoginWindowToggle(false);
-      navigate("/home");
-    }
-  };
+  //   if (parameter) {
+  //     setLoginWindowToggle(false);
+  //     navigate("/home");
+  //   }
+  // };
 
   return (
     <div>
@@ -56,7 +62,7 @@ export default function Appbar() {
             <MapsHomeWorkRoundedIcon className="homeIcon" />
           </Button>
         </div>
-        {!loggedIn ? (
+        {!props.setLogin ? (
           <div className="login-container">
             <button
               id="signInButton"
@@ -76,12 +82,12 @@ export default function Appbar() {
         ) : (
           <ProfilePill
             onToggleNotiTray={handleToggleNotiTray}
-            onSetLoggedInStatus={handleLoggedInStatus}
+            // onSetLoggedInStatus={handleLoggedInStatus}
           />
         )}
       </div>
 
-      {loginWindowToggle ? (
+      {/* {loginWindowToggle ? (
         <div container className="loginWindowWrapper">
           <LoginWindow
             onSetLoggedInStatus={handleLoggedInStatus}
@@ -90,7 +96,7 @@ export default function Appbar() {
             className="loginWindow"
           />
         </div>
-      ) : null}
+      ) : null} */}
 
       <div className="notificationTrayWrapper">
         <NotificationTray

@@ -1,16 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import CustomTextField from "./../TextField/CustomTextField";
-import { TextField, Button } from "@mui/material";
-import { Alert, Collapse } from "@mui/material";
-import CustomAlert from "../CustomAlert/CustomAlert";
-
 import "./LoginWindow.css";
+import useAuth from "../../Hooks/AuthHook";
+import useAlert from "../../Hooks/AlertHook";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginWindow(props) {
   const className = "window " + props.className;
-  const [alertOepn, setAlertOpen] = useState(false);
-  const [alertText, setAlertText] = useState("");
-  const { onClickOutside } = props;
+  const {setAuth, auth} = useAuth();
+  const {setAlert} = useAlert();
+  const navigate = useNavigate();
+
+
+
+useEffect(()=>{
+  let x = JSON.parse(localStorage.getItem("loggedIn"));
+
+  if(x == true) {
+    navigate("/home")
+  }
+  
+},[])
+
 
   const [login, setLogin] = useState({
     email: "",
@@ -30,18 +41,21 @@ export default function LoginWindow(props) {
       },
       body: JSON.stringify(login),
     }).then((response) => {
+      console.log(response)
       if (response.status != 200) {
-        setAlertOpen(true);
-        setAlertText("incorrect email/password");
+      setAlert("Incorrect email/password. Please try again", "error")
         return;
       }
 
-      // props.onSetLoggedInStatus(true);
-      localStorage.setItem("loggedIn", true);
-
-      response.json().then((responseJson) => {
-        localStorage.setItem("jwt", responseJson.jwt);
-      });
+      if(response.ok){
+        setAuth(true)
+        localStorage.setItem("loggedIn", true)
+        navigate("/home")
+        response.json().then((responseJson) => {
+          console.log(responseJson.jwt)
+          localStorage.setItem("jwt", responseJson.jwt);
+        });
+      }
     });
   };
 
@@ -64,11 +78,6 @@ export default function LoginWindow(props) {
           placeholder="Password"
           className="login"
         ></CustomTextField>
-        <Collapse in={alertOepn}>
-          <Alert className="login-alert" severity="error">
-            {alertText}
-          </Alert>
-        </Collapse>
         <button
           onClick={handleLoginSubmit}
           id="signInButton123"
@@ -80,6 +89,9 @@ export default function LoginWindow(props) {
         </button>
         <a className="link" href="/">
           Forgot password?
+        </a>
+        <a className="link" href="/signup">
+          Don't have an account?
         </a>
       </div>
     </div>
