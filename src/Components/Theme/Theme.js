@@ -1,7 +1,7 @@
-import { createMuiTheme } from "@mui/material";
+import { createTheme } from "@mui/material";
 import { deepPurple, amber } from "@mui/material/colors";
 
-const theme = createMuiTheme({
+const theme = createTheme({
 
 palette : {
     primary: {

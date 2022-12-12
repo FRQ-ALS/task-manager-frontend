@@ -10,21 +10,8 @@ import useAuth from "../../Hooks/AuthHook";
 
 
 export default function Appbar(props) {
-  console.log(props.setLogin)
   const [loginWindowToggle, setLoginWindowToggle] = useState(false);
   const [notiTrayToggle, setNotiTrayToggle] = useState(false);
-
-  const {setAuth, auth} = useAuth();
-  
-  // const [loggedIn, setLoggedIn] = useState(
-  //   JSON.parse(localStorage.getItem("loggedIn"))
-  // );
-
-
-  // useEffect(()=>{
-  //   setLoggedIn(JSON.parse(localStorage.getItem("loggedIn")))
-  // }, [localStorage.getItem("loggedIn")])
-
 
   let navigate = useNavigate();
 
@@ -45,19 +32,11 @@ export default function Appbar(props) {
     setNotiTrayToggle(!notiTrayToggle);
   };
 
-  // const handleLoggedInStatus = (parameter) => {
-  //   setLoggedIn(parameter);
-
-  //   if (parameter) {
-  //     setLoginWindowToggle(false);
-  //     navigate("/home");
-  //   }
-  // };
 
   return (
     <div>
-      <div disableGutters={true} variant="regular" className="main">
-        <div container className="home-container">
+      <div variant="regular" className="main">
+        <div className="home-container">
           <Button onClick={homePageHandler}>
             <MapsHomeWorkRoundedIcon className="homeIcon" />
           </Button>

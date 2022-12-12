@@ -114,7 +114,6 @@ export default function AddProjectPage(props) {
   return (
     <>
       <div id="pageContainer">
-        {/* <CustomAlert enabled={showAlert} message={alertMessage}></CustomAlert> */}
         {pageToggle ? (
           <div id="form-container">
             <div id="fieldContainer">

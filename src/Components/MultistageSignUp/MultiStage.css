@@ -6,7 +6,13 @@
 .stage-item {
   height: 50px;
   width: 50px;
-  background-color: #2f3c7e;
+  background: rgb(9, 19, 121);
+  background: linear-gradient(
+    63deg,
+    rgba(9, 19, 121, 1) 0%,
+    rgba(6, 27, 163, 1) 21%,
+    rgba(0, 44, 255, 1) 100%
+  );
   margin-right: 70px;
   border-radius: 17px;
   font-weight: bold;
@@ -16,8 +22,6 @@
   vertical-align: middle;
   line-height: 50px;
   outline: 3px solid #c91c48;
-  outline: 3px solid orange;
-  
 }
 
 #active {

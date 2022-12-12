@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, } from "react";
 import CustomTextField from "./../TextField/CustomTextField";
 import "./LoginWindow.css";
 import useAuth from "../../Hooks/AuthHook";
@@ -16,7 +16,7 @@ export default function LoginWindow(props) {
 useEffect(()=>{
   let x = JSON.parse(localStorage.getItem("loggedIn"));
 
-  if(x == true) {
+  if(x === true) {
     navigate("/home")
   }
   

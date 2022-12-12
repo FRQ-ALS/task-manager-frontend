@@ -9,31 +9,12 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    animation: emailFadeIn 500ms linear;
-    background-color: white;
-
   }
-  
-  .button{
-      height: 55px;
+
+  #sendButton{
+    height: 48px;
+    width: 70px;
   }
-  
-
-
-  @keyframes emailFadeIn {
-    0% {
-        opacity: 0;
-        /* transform: rotateY(-90deg); */
-    }
-    50% {
-        /* transform: rotateY(-20deg); */
-    }
-    100% {
-        opacity: 1;
-        /* transform: rotateY(0deg); */
-    }
-}
-
 
 
 

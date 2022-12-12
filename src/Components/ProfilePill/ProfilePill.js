@@ -55,8 +55,9 @@ export default function ProfilePill(props) {
   function renderMenuItems() {
     return (
       <div className="menu">
-        {menuItems.map((item) => (
-          <button
+        {menuItems.map((item, index) => (
+          <button 
+            key={index}
             onClick={(event) => handleButtonClick(event, item)}
             className="menu-item"
           >

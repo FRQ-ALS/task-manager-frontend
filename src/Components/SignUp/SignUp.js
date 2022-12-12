@@ -47,6 +47,7 @@ export default function SignUp() {
       console.log(response.status);
     });
   }
+  
 
   function cardSwitcher() {
     switch (activeStep) {

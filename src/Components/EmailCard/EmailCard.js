@@ -1,27 +1,18 @@
 import React, { useState } from "react";
-import { Typography, TextField, Paper, Button, Container } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CustomTextField from "../TextField/CustomTextField";
-import CustomAlert from "../CustomAlert/CustomAlert";
-
+import useAlert from "../../Hooks/AlertHook";
+import CustomButton from "../CustomButton/CustomButton";
 import "./EmailCard.css";
 
 export default function EmailCard(props) {
   const [email, setEmail] = useState("");
   const [fieldVariant, setFieldVariant] = useState("");
-  const [alertMessage, setAlertMessage] = useState("EMAIL ALREADY TAKEN");
-  const [alertOpen, setAlertOpen] = useState(false)
-  const [containerStatus, setContainerStaus] = useState("")
+
+  const {setAlert} = useAlert()
 
   const handleEmailSubmit = (e) => {
- 
-    if (!checkEmailSyntax(email)) {
-      setFieldVariant("error");
-      setTimeout(() => {
-        setFieldVariant("");
-      }, 1000);
-      return;
-    }
+    console.log("hello")
 
     fetch("/api/v1/account/emailcheck", {
       credentials: "include",
@@ -32,61 +23,43 @@ export default function EmailCard(props) {
       body: JSON.stringify(email),
     }).then((response) => {
 
-      if (response.status != 200) {
-        setFieldVariant("error");
+      if (!response.ok) {
+        response.text().then((text) => setAlert(text, "error"))
         return;
       }
 
-      setFieldVariant("success")
-      props.onSetEmail(email)
+      props.onSetEmail(email);
 
-      setTimeout(()=>{
+      setTimeout(() => {
         props.onSetActiveStage(2);
-        props.onSetTypeWriter("Enter a password")
-      }, 1000)
-      
+      }, 1000);
     });
   };
 
-
-  function checkEmailSyntax(email) {
-
-    if(!email.includes("@")) return false;
-
-    if(!email.includes(".")) return false;
-
-    return true
-
-  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
   return (
-    <div >
-    <Paper 
-      // sx={{ backgroundColor: "#2F3C7E", borderRadius: 5}}
-      className="paper-container"
-    >
-      <CustomTextField
-        onChange={handleEmailChange}
-        className="field"
-        type="email"
-        variant={fieldVariant}
-        placeholder="Enter your email"
-      />
-      <Button
-        className="button"
-        variant="contained"
-        color="secondary"
-        onClick={handleEmailSubmit}
+    <div>
+      <div
+        className="paper-container"
       >
-        <SendIcon />
-      </Button>
-    </Paper>
-    {/* <CustomAlert enabled={alertOpen} className="alert" variant="error" message={alertMessage}/> */}
+        <CustomTextField
+          onChange={handleEmailChange}
+          className="field"
+          type="email"
+          variant={fieldVariant}
+          placeholder="Enter your email"
+        />
+        <CustomButton
+          id="sendButton"
+          onClick={handleEmailSubmit}
+        >
+          <SendIcon />
+        </CustomButton>
+      </div>
     </div>
-    
   );
 }
