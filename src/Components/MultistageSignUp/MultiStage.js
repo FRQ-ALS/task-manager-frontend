@@ -1,7 +1,7 @@
 import React from "react";
 import "./MultiStage.css";
 
-const stages = [1, 2, 3, 4];
+const stages = [1, 2, 3];
 
 export default function MultiStage(props) {
   //passing down class names so that CSS can be applied in parent clas
@@ -16,11 +16,18 @@ export default function MultiStage(props) {
     return "";
   }
 
+
+  function completedOrNot(stage){
+    if(stage<activeStage){
+      return "true";
+    }
+    return ""
+  }
+
   return (
     <div container className="main-container">
       {stages.map((stage) => (
-        <div id={activeOrNot(stage)} className={classes}>
-          {stage}
+        <div id={activeOrNot(stage)} completed={completedOrNot(stage)} className={classes}>
         </div>
       ))}
     </div>

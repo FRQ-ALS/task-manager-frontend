@@ -13,10 +13,9 @@ import ImageUploadCard from "../ImageUploadCard/ImageUploadCard";
 const DEFAULT_MESSAGE = "Enter your email.";
 
 export default function SignUp() {
-  const [typeWriterText, setTypeWriterText] = useState(DEFAULT_MESSAGE);
   const [email, setEmail] = useState("");
   const [activeStep, setActiveStep] = useState(1);
-  
+
   const handleActiveStep = (enteredActiveStage) => {
     setActiveStep(enteredActiveStage);
   };
@@ -26,16 +25,14 @@ export default function SignUp() {
   };
 
   const handlePasswordChange = (enteredValue) => {
-    submitRequest(enteredValue)
+    submitRequest(enteredValue);
   };
 
-  const handleTypeWriterText = (enteredText) => {
-    setTypeWriterText(enteredText);
-  };
+
 
   function submitRequest(password) {
     var body = { email, password };
-    console.log(body)
+    console.log(body);
     fetch("api/v1/account/register", {
       credentials: "include",
       method: "POST",
@@ -47,14 +44,12 @@ export default function SignUp() {
       console.log(response.status);
     });
   }
-  
 
   function cardSwitcher() {
     switch (activeStep) {
       case 1:
         return (
           <EmailCard
-            onSetTypeWriter={handleTypeWriterText}
             onSetEmail={handleEmailChange}
             onSetActiveStage={handleActiveStep}
           />
@@ -79,13 +74,8 @@ export default function SignUp() {
   }
 
   return (
-    <div className="main-container">
-      <div container className="multistage-container">
-        <MultiStage activeStage={activeStep} className="stages" />
-      </div>
-      <div className="typewriter-container">
-        {/* <p className="bottom-text">{typeWriterText}</p> */}
-      </div>
+    <div id="signUpContainer">
+      <MultiStage activeStage={activeStep} className="stages" />
       {cardSwitcher()}
     </div>
   );

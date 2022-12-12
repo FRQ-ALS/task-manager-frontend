@@ -31,7 +31,6 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <AppBar setLogin={auth} />
@@ -47,7 +46,6 @@ function App() {
             <Route path="/login" element={<LoginWindow/>}/>
           </Routes>
         </ThemeProvider>
-      </Router>
     </div>
   );
 }

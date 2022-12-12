@@ -1,29 +1,10 @@
-.main-container {
-  position: relative;
-
+#signUpContainer{
+  margin-top: 70px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
 }
-
-.multistage-container{
-  position: absolute;
-  left:50%;
-  top: 50%;
-  transform: translate(-43%, 100%);
-}
-
-.typewriter-container{
-  position:absolute;
-  top:380px;
-  color: #2F3C7E;
-  font-size: 3em;
-}
-
-.bottom-text{
-  font-family: Tahoma;
-  color: #2F3C7E;
-  font-size: 1em;
-  
-}
-
-
-
-

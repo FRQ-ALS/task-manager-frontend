@@ -8,12 +8,9 @@ import "./EmailCard.css";
 export default function EmailCard(props) {
   const [email, setEmail] = useState("");
   const [fieldVariant, setFieldVariant] = useState("");
-
-  const {setAlert} = useAlert()
+  const { setAlert } = useAlert();
 
   const handleEmailSubmit = (e) => {
-    console.log("hello")
-
     fetch("/api/v1/account/emailcheck", {
       credentials: "include",
       method: "POST",
@@ -22,20 +19,25 @@ export default function EmailCard(props) {
       },
       body: JSON.stringify(email),
     }).then((response) => {
-
       if (!response.ok) {
-        response.text().then((text) => setAlert(text, "error"))
+        response.text().then((text) => setAlert(text, "error"));
+
+        setFieldVariant("error");
+        setTimeout(() => {
+          setFieldVariant("");
+        }, 2000);
         return;
       }
 
       props.onSetEmail(email);
+      setFieldVariant("success")
 
       setTimeout(() => {
         props.onSetActiveStage(2);
+        setFieldVariant("")
       }, 1000);
     });
   };
-
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -43,9 +45,7 @@ export default function EmailCard(props) {
 
   return (
     <div>
-      <div
-        className="paper-container"
-      >
+      <div id="emailCardContainer">
         <CustomTextField
           onChange={handleEmailChange}
           className="field"
@@ -53,10 +53,7 @@ export default function EmailCard(props) {
           variant={fieldVariant}
           placeholder="Enter your email"
         />
-        <CustomButton
-          id="sendButton"
-          onClick={handleEmailSubmit}
-        >
+        <CustomButton id="sendButton" onClick={handleEmailSubmit}>
           <SendIcon />
         </CustomButton>
       </div>

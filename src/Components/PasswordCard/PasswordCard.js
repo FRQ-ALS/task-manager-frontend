@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Typography, TextField, Paper, Button, Container } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CustomTextField from "../TextField/CustomTextField";
-import CustomAlert from "../CustomAlert/CustomAlert";
-import { InputText } from "primereact/inputtext";
+import CustomButton from "../CustomButton/CustomButton";
 
 import "./PasswordCard.css";
 
@@ -51,9 +49,8 @@ export default function PasswordCard(props) {
 
   return (
     <div>
-      <Paper
-        sx={{ backgroundColor: "#FFFFF" }}
-        className="password-container"
+      <div
+       id="passwordCardContainer"
       >
         <CustomTextField
           onChange={handlePasswordChange}
@@ -62,15 +59,6 @@ export default function PasswordCard(props) {
           variant={fieldVariant}
           placeholder="Enter a password"
         />
-        <Button
-          className="button"
-          variant="contained"
-          color="secondary"
-          onClick={handleSubmit}
-        >
-          <SendIcon />
-        </Button>
-
         <CustomTextField
           onChange={handleRetypeChange}
           className="textfield"
@@ -78,7 +66,15 @@ export default function PasswordCard(props) {
           variant={fieldVariant}
           placeholder="Confirm your password"
         />
-      </Paper>
+           <CustomButton
+        id="passwordSubmitButton"
+          variant="contained"
+          color="secondary"
+          onClick={handleSubmit}
+        > Sign Up
+          {/* <SendIcon /> */}
+        </CustomButton>
+      </div>
     </div>
   );
 }

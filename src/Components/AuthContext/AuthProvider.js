@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const AuthContext = createContext({
   auth: null,
@@ -8,10 +9,12 @@ const AuthContext = createContext({
 
 const useAuth = () => useContext(AuthContext);
 
+
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("loggedIn")));
   const [user, setUser] = useState(null);
-
+  const navigate = useNavigate()
+  const location = useLocation()
   useEffect(() => {
     
     const isAuth = async () => {
@@ -32,6 +35,9 @@ export const AuthProvider = ({ children }) => {
           if(!response.ok){
             setAuth(false)
             localStorage.setItem("loggedIn",false)
+            // if(location.pathname != "/signup" && location.pathname!="/home"){
+            //   navigate("/login")
+            // }
           }
 
         }).catch((error => {
