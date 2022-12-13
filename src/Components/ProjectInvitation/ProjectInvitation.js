@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import "./ProjectInvitation.css";
 import CustomTextField from "../TextField/CustomTextField";
+import CustomButton from "../CustomButton/CustomButton";
+
+// background-color: #2c2e33;
+
 
 
 export default function ProjectInvitation(props) {
@@ -46,22 +50,22 @@ export default function ProjectInvitation(props) {
     <div id="invitationcontainer">
       <div id="promptcontainer">
         <p1 id="text">Would you like to generate an invitation link?</p1>
-        <button
+        <CustomButton
           onClick={handlePromptButton}
           name="Yes"
           id="button"
           className={buttonSelected === "Yes" ? "selected" : ""}
         >
           Yes
-        </button>
-        <button
+        </CustomButton>
+        <CustomButton
           onClick={handlePromptButton}
           name="No"
           id="button"
           className={buttonSelected === "No" ? "selected" : ""}
         >
           No
-        </button>
+        </CustomButton>
       </div>
 
       {buttonSelected === "Yes" ? (
