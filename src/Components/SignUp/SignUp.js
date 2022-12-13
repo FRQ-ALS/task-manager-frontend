@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./SignUp.css";
-import { Typography, TextField, Paper, Button, Container } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import MultiStage from "../MultistageSignUp/MultiStage";
-import Typewriter from "typewriter-effect";
 import EmailCard from "../EmailCard/EmailCard";
 import PasswordCard from "../PasswordCard/PasswordCard";
 import VerificationCard from "../VerificationCard/VerificationCard";
@@ -69,6 +65,9 @@ export default function SignUp() {
 
       case 4:
         return <ImageUploadCard />;
+        
+      default:
+        return(null)
     }
   }
 

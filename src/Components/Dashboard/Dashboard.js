@@ -9,7 +9,6 @@ export default function Dashboard() {
 
   return(
     <div id="dashboard-container">
-      {/* <Sidebar id="sidebar" /> */}
       <Projects id="projects"/>
     </div>
   )

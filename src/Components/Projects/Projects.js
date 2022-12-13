@@ -10,7 +10,7 @@ const collaborators = [1, 2, 3, 4];
 
 const taskStatus = ["Pending", "Completed", "Blocked"];
 
-export default function Projects() {
+export default function Projects(props) {
   const navigate = useNavigate();
 
   const buttonHandler = (projectID) => {
@@ -18,7 +18,7 @@ export default function Projects() {
   };
 
   return (
-    <div id="main-container">
+    <div id={props.id} className="projectsContainer">
       <ProjectTaskBar />
       <div id="project-container">
         {projects.map((project) => (
