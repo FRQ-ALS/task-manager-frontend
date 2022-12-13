@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import useAuth from "../../Hooks/AuthHook";
-
+import NotificationBell from "../NotificationBell/NotificationBell";
 import "./ProfilePill.css";
 
 const menuItems = ["Profile", "Settings", "Dashboard", "Log out"];
@@ -82,10 +82,9 @@ export default function ProfilePill(props) {
         <h1 className="profile-name">Farooq Al-Saadi</h1>
       </button>
 
-      <button onClick={handleNotiClick} className="noti-button">
-        <NotificationsIcon className="notification" />
-        {unreadNotifications != 0 ? <div className="red-dot"></div> : null}
-      </button>
+
+
+      <NotificationBell onClick={handleNotiClick}></NotificationBell>
     </div>
   );
 }
