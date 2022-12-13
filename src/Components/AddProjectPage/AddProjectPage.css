@@ -46,21 +46,8 @@
 }
 
 #submit {
-  border: none;
   height: 30px;
   width: 120px;
-  cursor: pointer;
-  border-radius: 10px;
-  font-weight: bold;
-  background: rgb(9, 19, 121);
-  background: linear-gradient(
-    63deg,
-    rgba(9, 19, 121, 1) 0%,
-    rgba(6, 27, 163, 1) 21%,
-    rgba(0, 44, 255, 1) 100%
-  );
-  color: white;
-  outline: 1.5px solid white;
 }
 
 @keyframes rollDown {
@@ -76,10 +63,7 @@
     transform: rotateX(0deg);
   }
 }
-/* .alert {
-  position: absolute;
-  margin-top: 5px;
-} */
+
 
 #linkCardContainer {
   display: flex;

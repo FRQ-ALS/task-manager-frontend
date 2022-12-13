@@ -7,6 +7,7 @@ import LoginWindow from "../LoginWindow/LoginWindow";
 import ProfilePill from "../ProfilePill/ProfilePill";
 import NotificationTray from "../NotificationTray/NotificationTray";
 import useAuth from "../../Hooks/AuthHook";
+import CustomButton from "../CustomButton/CustomButton"
 
 
 export default function Appbar(props) {
@@ -43,20 +44,20 @@ export default function Appbar(props) {
         </div>
         {!props.setLogin ? (
           <div className="login-container">
-            <button
+            <CustomButton
               id="signInButton"
               onClick={signInHandler}
         
             >
               SIGN IN
-            </button>
+            </CustomButton>
 
-            <button
+            <CustomButton
               id="signInButton"
               onClick={signUpHandler}
             >
               SIGN UP
-            </button>
+            </CustomButton>
           </div>
         ) : (
           <ProfilePill

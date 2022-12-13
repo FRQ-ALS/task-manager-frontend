@@ -71,7 +71,7 @@ export default function PasswordCard(props) {
           variant="contained"
           color="secondary"
           onClick={handleSubmit}
-        > Sign Up
+        > Submit
           {/* <SendIcon /> */}
         </CustomButton>
       </div>

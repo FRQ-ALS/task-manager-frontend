@@ -15,24 +15,9 @@
 }
 
 #signInButton {
-  font-weight: bold;
   height: 35px;
-  border: none;
   width: 80px;
   border-radius: 10px;
-  color: white;
-  outline: 2px solid white;
-  background: rgb(9, 19, 121);
-  background: linear-gradient(
-    63deg,
-    rgba(9, 19, 121, 1) 0%,
-    rgba(6, 27, 163, 1) 21%,
-    rgba(0, 44, 255, 1) 100%
-  );
-}
-
-#signInButton:active {
-  scale: 0.9;
 }
 
 .homeIcon {

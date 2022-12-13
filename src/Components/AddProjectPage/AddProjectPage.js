@@ -4,11 +4,10 @@ import "./AddProjectPage.css";
 import CustomTextField from "../TextField/CustomTextField";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import OwnerTab from "../OwnerTab/OwnerTab";
-import CustomAlert from "../CustomAlert/CustomAlert";
 import { useNavigate } from "react-router-dom";
 import ProjectInvitation from "../ProjectInvitation/ProjectInvitation";
-import { render } from "@testing-library/react";
 import useAlert from "../../Hooks/AlertHook";
+import CustomButton from "../CustomButton/CustomButton"
 
 const NAME_TAKEN_MESSAGE =
   "A project with this name already exists on this account, please enter another name.";
@@ -138,9 +137,9 @@ export default function AddProjectPage(props) {
               <p1 className="label">Public</p1>
             </div>
             <ProjectInvitation onSetInvitation={handleInvitation} />
-            <button onClick={handleSubmit} id="submit">
+            <CustomButton onClick={handleSubmit} id="submit">
               Create Project
-            </button>
+            </CustomButton>
           </div>
         ) : (
           renderLinkCard()

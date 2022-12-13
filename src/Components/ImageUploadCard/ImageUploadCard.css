@@ -1,13 +1,10 @@
-.image-container {
-    position: absolute;
+#createProfileContainer {
     width: 600px;
     height: 200px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 90%);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    animation: SlideFromRight 400ms ease-in-out;
   }
 
 .image{
@@ -29,14 +26,28 @@
 .image-button{
     width:150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 50% !important;
+    outline: 2px solid white !important
 }
 
 .choice-button{
-    font-weight: bold !important;
+    height: 35px;
+    padding: 10px;
 }
 
-#approved {
-    outline: 4px solid green;
+#inputContainer{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
 }
-  
+
+@keyframes SlideFromRight {
+    0%{
+      transform: translateX(200px);
+    }
+    
+  }
+
