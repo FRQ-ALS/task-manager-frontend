@@ -4,6 +4,7 @@ import "./LoginWindow.css";
 import useAuth from "../../Hooks/AuthHook";
 import useAlert from "../../Hooks/AlertHook";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../CustomButton/CustomButton"
 
 export default function LoginWindow(props) {
   const className = "window " + props.className;
@@ -78,7 +79,7 @@ useEffect(()=>{
           placeholder="Password"
           className="login"
         ></CustomTextField>
-        <button
+        <CustomButton
           onClick={handleLoginSubmit}
           id="signInButton123"
           variant="contained"
@@ -86,7 +87,7 @@ useEffect(()=>{
           // className="signin-button"
         >
           SIGN IN
-        </button>
+        </CustomButton>
         <a className="link" href="/">
           Forgot password?
         </a>

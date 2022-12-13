@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, TextField, Paper, Button, Container } from "@mui/material";
 import DefaultImage from "../../Images/default-image.png";
+import CustomButton from "../CustomButton/CustomButton";
+import CustomTextField from "../TextField/CustomTextField";
 import "./ImageUploadCard.css";
 
 export default function ImageUploadCard(props) {
@@ -20,7 +22,7 @@ export default function ImageUploadCard(props) {
   };
 
   const handleSkip = (e) => {
-    navigate("/")
+    navigate("/");
   };
 
   function createImageURL(image) {
@@ -31,12 +33,12 @@ export default function ImageUploadCard(props) {
     const body = new FormData();
     body.append("file", image);
 
-    var jwt = localStorage.getItem("jwt")
+    var jwt = localStorage.getItem("jwt");
 
     fetch("/api/v1/images/upload/imageType=profile", {
       credentials: "include",
       method: "POST",
-      headers: {"Authorization": "Bearer "+ jwt},
+      headers: { Authorization: "Bearer " + jwt },
       body: body,
     }).then((response) => {
       if (response.status == 200) {
@@ -52,11 +54,7 @@ export default function ImageUploadCard(props) {
 
   return (
     <div>
-      <Paper
-        id={approved}
-        sx={{ backgroundColor: "#2F3C7E", borderRadius: 5 }}
-        className="image-container"
-      >
+      <div id="createProfileContainer">
         <input
           type="file"
           accept="image/*"
@@ -69,28 +67,21 @@ export default function ImageUploadCard(props) {
             {imageChanged ? (
               <img className="imageChanged" src={createImageURL(image)}></img>
             ) : (
-              <img className="image" src={image}></img>
+              null
             )}
           </Button>
         </label>
 
-        <Button
-          onClick={handleSubmit}
-          className="choice-button"
-          variant="contained"
-          color="secondary"
-        >
+        <div id="inputContainer">
+        <CustomTextField placeholder="Enter display name"></CustomTextField>
+        <CustomButton onClick={handleSubmit} className="choice-button">
           SUBMIT
-        </Button>
-        <Button
-          onClick={handleSkip}
-          className="choice-button"
-          variant="contained"
-          color="secondary"
-        >
+        </CustomButton>
+        <CustomButton onClick={handleSkip} className="choice-button">
           SKIP FOR NOW
-        </Button>
-      </Paper>
+        </CustomButton>
+        </div>
+      </div>
     </div>
   );
 }

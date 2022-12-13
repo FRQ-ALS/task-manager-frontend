@@ -10,7 +10,6 @@ import PasswordCard from "../PasswordCard/PasswordCard";
 import VerificationCard from "../VerificationCard/VerificationCard";
 import ImageUploadCard from "../ImageUploadCard/ImageUploadCard";
 
-const DEFAULT_MESSAGE = "Enter your email.";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");

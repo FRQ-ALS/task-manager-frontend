@@ -8,13 +8,9 @@
 #loginContainer {
   height: 400px;
   width: 300px;
-
-  /* background-color: #2c2e33; */
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: Tahoma;
   color: white;
-  animation: appear 200ms linear;
-  /* transform-origin: top center; */
   position: absolute;
   display:flex;
   flex-direction: column;
@@ -26,7 +22,6 @@
 
 .login{
     width: 230px;
-    /* background-color: white !important; */
 }
 
 #signInButton123{
@@ -68,19 +63,6 @@
     100% {
         opacity: 1;
         transform: rotateX(0deg);
-    }
-}
-@keyframes appear {
-    0% {
-        opacity: 0;
-    }
-    50%{
-        opacity: 0.5;
-    }
-
-    100%{
-        opacity: 1;
-
     }
 }
 
