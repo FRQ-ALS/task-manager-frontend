@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate()
   const location = useLocation()
   useEffect(() => {
-    
     const isAuth = async () => {
         const jwt = localStorage.getItem("jwt")
         fetch("/api/v1/account/auth",

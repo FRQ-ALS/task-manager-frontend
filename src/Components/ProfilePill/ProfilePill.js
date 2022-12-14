@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
-import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import useAuth from "../../Hooks/AuthHook";
 import NotificationBell from "../NotificationBell/NotificationBell";
 import "./ProfilePill.css";
+import CustomButton from "../CustomButton/CustomButton";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const menuItems = ["Profile", "Settings", "Dashboard", "Log out"];
 
 export default function ProfilePill(props) {
   const [menuDrawn, setMenuDrawn] = useState(false);
   const [unreadNotifications, setNotifications] = useState(1);
-  // /JSON.parse(localStorage.getItem("notifications"))
-
   const [profileImage, setProfileImage] = useState([]);
-  const {setAuth} = useAuth()
+  const { setAuth, user } = useAuth();
+  console.log(user);
 
   const handleMenuDraw = (e) => {
     setMenuDrawn(!menuDrawn);
   };
 
   const handleNotiClick = (e) => {
-    props.onToggleNotiTray()
-  }
+    props.onToggleNotiTray();
+  };
 
   const handleButtonClick = (e, button) => {
     if (button === "Log out") {
       localStorage.setItem("loggedIn", false);
-      setAuth(false)
+      setAuth(false);
     }
   };
 
@@ -37,10 +36,10 @@ export default function ProfilePill(props) {
     var jwt = localStorage.getItem("jwt");
     var imageURL;
 
-    const response = await fetch("/api/v1/images/download/" + 1, {
+    const response = await fetch("/api/v1/images/getProfileImage", {
       credentials: "include",
       method: "GET",
-      headers: { Authorization: "Bearer " + jwt },
+      headers: { Authorization: `Bearer ${jwt}` },
     });
 
     const imageBlob = await response.blob();
@@ -54,36 +53,38 @@ export default function ProfilePill(props) {
 
   function renderMenuItems() {
     return (
-      <div className="menu">
+      <div id="profilePillMenu">
         {menuItems.map((item, index) => (
-          <button 
+          <CustomButton
             key={index}
             onClick={(event) => handleButtonClick(event, item)}
-            className="menu-item"
+            id="profilePillMenuItem"
           >
             {item}
-          </button>
+          </CustomButton>
         ))}
       </div>
     );
   }
 
   return (
-    <div className="main-container">
+    <div id="userProfileContainer">
       {menuDrawn ? renderMenuItems() : null}
-      <button
+      <div
         onClick={handleMenuDraw}
         variant="outlined"
-        className="profile-container"
+        id="profilePillContainer"
       >
-        <div className="icon">
-          <img className="icon" src={profileImage}></img>
-        </div>
-        <h1 className="profile-name">Farooq Al-Saadi</h1>
-      </button>
-
-
-
+        <MoreVertIcon />
+        <img id="profilePicture" src={profileImage}></img>
+        <h1 id="profileName">
+          {user === null
+            ? ""
+            : user.displayName === null
+            ? user.email
+            : user.displayName}
+        </h1>
+      </div>
       <NotificationBell onClick={handleNotiClick}></NotificationBell>
     </div>
   );

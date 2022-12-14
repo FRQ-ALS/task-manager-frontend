@@ -10,6 +10,7 @@ export default function ImageUploadCard(props) {
   const [image, setImage] = useState(DefaultImage);
   const [imageChanged, setImageChanged] = useState(false);
   const [approved, setApproved] = useState("");
+  const [displayName, setDisplayName] = useState("")
   const navigate = useNavigate();
 
   const fileHandler = (e) => {
@@ -25,6 +26,11 @@ export default function ImageUploadCard(props) {
     navigate("/");
   };
 
+  const handleDisplayName = (e)=>{
+    console.log(e.target.value)
+    setDisplayName(e.target.value)
+  }
+
   function createImageURL(image) {
     return URL.createObjectURL(image);
   }
@@ -35,18 +41,17 @@ export default function ImageUploadCard(props) {
 
     var jwt = localStorage.getItem("jwt");
 
-    fetch("/api/v1/images/upload/imageType=profile", {
+    fetch(`/api/v1/account/uploadProfile/displayName=${displayName}`, {
       credentials: "include",
       method: "POST",
-      headers: { Authorization: "Bearer " + jwt },
+      headers: { Authorization: `Bearer ${jwt}`},
       body: body,
     }).then((response) => {
-      if (response.status == 200) {
+      if (response.ok) {
         console.log("Image uploaded");
-        setApproved("approved");
 
         setTimeout(() => {
-          navigate("/");
+          navigate("/dashboard");
         }, 1000);
       }
     });
@@ -73,7 +78,7 @@ export default function ImageUploadCard(props) {
         </label>
 
         <div id="inputContainer">
-        <CustomTextField placeholder="Enter display name"></CustomTextField>
+        <CustomTextField onChange={handleDisplayName} placeholder="Enter display name"></CustomTextField>
         <CustomButton onClick={handleSubmit} className="choice-button">
           SUBMIT
         </CustomButton>
