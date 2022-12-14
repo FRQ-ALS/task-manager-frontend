@@ -12,7 +12,6 @@ export default function VerificationCard(props) {
 
   const handleContinue =() =>{
     var email = props.email;
-
     fetch("api/v1/account/checkVerified/" + email, {
       credentials: "include",
       method: "GET",
@@ -21,9 +20,9 @@ export default function VerificationCard(props) {
       },
     }).then((response) => {
 
-      console.log(response.status)
       if (response.ok) {
         response.json().then((responseJson) => {
+          console.log(responseJson)
           localStorage.setItem("jwt", responseJson.jwt);
         });
         setUserLocked(false);
@@ -40,7 +39,6 @@ export default function VerificationCard(props) {
   const handleResendEmail =(e) =>{
 
     let email = props.email;
-    
     fetch(`/api/v1/account/resendConfirmationEmail/${email}`,{
       credentialsc:"indlude",
       method:"POST",
