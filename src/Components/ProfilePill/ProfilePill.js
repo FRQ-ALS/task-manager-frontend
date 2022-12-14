@@ -12,7 +12,6 @@ export default function ProfilePill(props) {
   const [unreadNotifications, setNotifications] = useState(1);
   const [profileImage, setProfileImage] = useState([]);
   const { setAuth, user } = useAuth();
-  console.log(user);
 
   const handleMenuDraw = (e) => {
     setMenuDrawn(!menuDrawn);
@@ -34,8 +33,7 @@ export default function ProfilePill(props) {
 
   const fetchImage = async () => {
     var jwt = localStorage.getItem("jwt");
-    var imageURL;
-
+  
     const response = await fetch("/api/v1/images/getProfileImage", {
       credentials: "include",
       method: "GET",
