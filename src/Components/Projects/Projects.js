@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectTaskBar from "../ProjectsTaskBar/ProjectTaskBar";
 import useAlert from "../../Hooks/AlertHook";
+import useAuth from "../../Hooks/AuthHook"
 import { GetProfileImage } from "../Functions/GetProfileImage/GetProfileImage";
 import "./Projects.css";
+import OwnerTab from "../OwnerTab/OwnerTab"
 
-const projects = [1, 2, 3, 4, 5, 6, 7, 8];
-const collaborators = [1, 2, 3, 4];
 const taskStatus = ["Pending", "Completed", "Blocked"];
-
 
 let jwt = localStorage.getItem("jwt");
 export default function Projects(props) {
   const [projectData, setProjectData] = useState();
-  const [images, setImages] = useState({})
+  const [images, setImages] = useState({});
+
+  const {user} = useAuth()
 
   const navigate = useNavigate();
   const { setAlert } = useAlert();
@@ -26,7 +27,7 @@ export default function Projects(props) {
     fetch("/api/v1/projects/getProjects", {
       credentials: "include",
       method: "GET",
-      headers: { Authorization: `Bearer ${jwt}` },
+      headers: { Authorization: `Bearer ${jwt}`},
     }).then((response) => {
       {
         response.ok
@@ -66,7 +67,10 @@ export default function Projects(props) {
             </div>
             <div id="collaborators">
               <div id="ownerContainer">
-                {/* <img src={GetProfileImage(project.owner.userID)}></img> */}
+                <img
+                  id="image"
+                  src="/api/v1/images/getProfileImageById=11"
+                ></img>
               </div>
               {project.collaborators.map((user) => (
                 <div id="user">
@@ -83,6 +87,24 @@ export default function Projects(props) {
     );
   };
 
+  const renderTable = () => {
+    return (
+        <div id="projectTable">
+            {projectData.map((project) => (
+              <div id="tableRow" onClick={event => console.log(project.projectId)}>
+                <div id="tableProjectTitle"  className="tableBodyHeader">{project.projectTitle}</div>
+                <div>{user.userID === project.owner.userID? "Owner" : "Collaborator" }</div>
+                <div id="tablePendingTasks" className="tableBodyHeader">{project.pendingTasks}</div>
+                <div id="tableCompletedTasks" className="tableBodyHeader">{project.completedTasks}</div>
+                <div id="tableBlockedTasks" className="tableBodyHeader">{project.blockedTasks}</div>
+                <div id="tableCollaborators" className="tableBodyHeader">Collaborators
+                </div>
+              </div>
+            ))}
+        </div>
+    );
+  };
+
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -95,8 +117,9 @@ export default function Projects(props) {
       {projectData === undefined ? (
         <div id="loading">Loading...</div>
       ) : (
-        renderProjects()
+        renderTable()
       )}
+      {/* {renderTable()} */}
     </div>
   );
 }

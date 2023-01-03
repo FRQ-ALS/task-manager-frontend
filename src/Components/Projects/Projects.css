@@ -1,11 +1,13 @@
-.projectsContainer{
+.projectsContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 #project-container {
-  width: 900px;
+  width: 700px;
+  height: 1000px;
+  background-color: #2c2e33;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -15,26 +17,16 @@
   margin-top: 20px;
   margin-left: 20px;
   max-height: 400px;
-  width: 400px;
+  width: 700px;
   min-width: 400px;
-  max-width: 400px;
-  /* background: rgb(9, 19, 121);
-  background: linear-gradient(
-    63deg,
-    rgba(9, 19, 121, 1) 0%,
-    rgba(6, 27, 163, 1) 21%,
-    rgba(0, 44, 255, 1) 100%
-  );
-  background-color: #2f3c7e; */
+  max-width: 700px;
   background-color: #2c2e33;
   border-radius: 10px;
-
   cursor: pointer;
-
   padding-bottom: 20px;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -90,7 +82,7 @@
   width: 40px;
   background-color: white;
   border-radius: 50%;
-  font-size:large;
+  font-size: large;
   text-align: center;
   vertical-align: middle;
   line-height: 40px;
@@ -104,20 +96,40 @@
   font-weight: bold;
 }
 
-.Pending{
-    background-color: gray !important;
-}
-
-.Completed {
-  background-color: green !important;
-}
-
-.Blocked {
-  background-color: red !important;
-}
-
-
-#loading{
+#loading {
   color: white;
   font-weight: bold;
+  margin-top: 50px;
+}
+
+#projectTable {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#tableRow {
+  padding: 20px;
+  height: 100px;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+}
+
+#Pending {
+  /* background-color: grey !important; */
+  /* color: grey; */
+}
+
+#Completed {
+  /* background-color: green !important; */
+  /* color: green; */
+}
+
+#Blocked {
+  /* background-color: red !important; */
+  /* color: red; */
 }
